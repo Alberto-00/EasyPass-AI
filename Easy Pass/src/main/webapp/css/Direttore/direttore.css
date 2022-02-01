@@ -1,0 +1,187 @@
+body {
+    background-color: var(--green);
+    color: var(--white);
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.error{
+    color: var(--error);
+}
+
+span.warning{
+    font-size: 15px;
+    color: var(--bs-warning);
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+
+
+/******************************
+ *  INIZIO CSS di Navbar.jsp  *
+ ******************************/
+.coll-1 {
+    background: var(--greenS);
+    flex: 0.5;
+    transition: all .3s ease-in-out
+}
+
+.coll-1.collapsee{
+    -webkit-transform: translate(-230px, 0);
+    -moz-transform: translate(-230px, 0);
+    -o-transform: translate(-230px, 0);
+    -ms-transform: translate(-230px, 0);
+}
+
+.coll-2 {
+    display: flex;
+    flex-direction: column;
+    flex: 6;
+    transition: all .3s ease-in-out;
+}
+
+.coll-2.full--width{
+    margin-left: -195px;
+}
+
+.gridd-y{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    flex-direction: row;
+}
+
+nav{
+    padding: 0.7em;
+}
+
+nav a{
+    text-decoration: none;
+    color: var(--white);
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    margin: auto;
+}
+
+nav > a:first-child{
+    margin: 0!important;
+}
+
+nav a:hover{
+    color: var(--hover);
+}
+
+a > .logoNavbar{
+    width: 100%;
+    height: auto;
+}
+
+.btnn {
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: bold;
+    border: none;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    padding: 1.7em;
+}
+
+.btnn:hover {
+    background-color: #2EE59D;
+    box-shadow: 0 15px 20px rgba(46, 229, 157, 0.4);
+    color: var(--black);
+    border-radius: 12px;
+}
+
+.covidRedImg{
+    width: 60%;
+    height: auto;
+    margin: auto;
+}
+
+
+/******************************
+ *  INIZIO CSS di Header.jsp  *
+ ******************************/
+header {
+    background: var(--greenS);
+    padding: 0.1em;
+    width: inherit;
+}
+
+.coll-3 {
+    display: flex;
+    flex-direction: column;
+    flex: 6;
+    transition: all .3s ease-in-out;
+    width: 6%;
+}
+
+.my-row{
+    display: grid;
+    grid-template-columns: 2.6em auto;
+    padding: 10px;
+}
+
+.coll-4 {
+    display: flex;
+    flex-direction: column;
+    flex: 6;
+    transition: all .3s ease-in-out;
+    width: 100%;
+}
+
+span.account {
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    font-size: 21px;
+    margin-top: 0.45em;
+}
+
+.angle-double-up{
+    border: 2px solid rgba(255,255,255,.5);
+    cursor: pointer;
+    transition: .3s;
+    padding: 5px;
+    width: 40.8px;
+    height: 40.8px;
+}
+
+.angle-double-up:hover{
+    background-color: #2EE59D;
+    box-shadow: 0 15px 20px rgba(46, 229, 157, 0.4);
+    color: var(--black);
+    border-radius: 12px;
+}
+
+@media screen and (max-width: 1200px) {
+    span.account{
+        margin-left: 1em;
+        margin-top: 0;
+    }
+}
+
+
+
+/******************************
+ *  INIZIO CSS di Footer.jsp  *
+ ******************************/
+footer {
+    background: var(--green);
+    height: 3vh;
+    font-size: 14px;
+    align-content: flex-end;
+    text-align: right;
+    margin-top: auto;
+    margin-bottom: 1.6em;
+}
+
+footer > span{
+    margin: 20px;
+}

@@ -1,0 +1,53 @@
+.grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+.grid-cell {
+    margin: 20px 30px 20px 30px;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 35px;
+    display: flex;
+    position: relative;
+    cursor:pointer;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+    background-color: #006f56;
+}
+
+hr.rounded {
+    border-top: 5px solid;
+    border-radius: 5px;
+    width: 95%;
+    margin: 15px auto 2em auto;
+    color: white;
+}
+
+.shadow{
+    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 2px 6px 2px;
+}
+
+.grid-data {
+    color:var(--white);
+    text-align: center;
+    font-size: 25px;
+    font-weight: normal;
+    position: relative;
+    display: flex;
+}
+
+@media screen and (min-width: 769px) {
+    .container{
+        flex-flow: row wrap;
+        display: block;
+    }
+    .container h1{
+        text-align: left;
+        margin-left: 50px;
+    }
+}

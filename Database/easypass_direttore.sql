@@ -1,0 +1,18 @@
+USE easypass;
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('DIEM', 'Vincenzo', 'AULETTA', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DIEM');
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('DIPSUM', 'Carmine', 'PINTO ', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DIPSUM');
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('DIPMED', 'Carmine', 'VECCHIONE', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DIPMED');
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('DISES', 'Sergio Pietro', 'DESTEFANIS', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DISES');
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('DICIV', 'Gianvittorio', 'RIZZANO', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DICIV');
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('DSG', 'Giovanni', 'SCIANCALEPORE', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DSG');
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('DISPS', 'Gennaro', 'IORIO', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DISPS');
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('DISPAC', 'Luca', 'CERCHIAI', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DISPAC');
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('lgargano@unisa.it', 'Luisa', 'GARGANO', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DI');
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('DISUFF', 'Paola', 'AIELLO', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DISUFF');
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('DISAMIS', 'Domenico', 'PARENTE', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DISA-MIS');
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('DIFARMA', 'Pietro', 'CAMPIGLIA ', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DIFARMA');
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('DCB', 'Pasquale', 'LONGO', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DCB');
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('DIPMAT', 'Raffaele', 'CERULLI', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DIPMAT');
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('DIIN', 'Roberto', 'PANTANI', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DIIN');
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('DFIS', 'Salvatore', 'DE PASQUALE', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DF');
+INSERT INTO easypass.direttore (Username_Dir, Nome_Dir, Cognome_Dir, Password_Dir, Codice_Dip) VALUES ('DISPC', 'Virgilio', 'D''ANTONIO', '6224f236e285e598bf91e45db4a362eb8b87e03112ab38fb6ff8575a4655c92a', 'DISPC');

@@ -1,0 +1,116 @@
+body{
+    background: #009578;
+    margin: 50px 15px 15px;
+    text-align: center;
+}
+
+h1, button, p{
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 2.5px;
+    font-weight: bold;
+    transition: all 0.3s ease 0s;
+    text-align: center;
+    color: var(--black);
+    text-shadow: 2px 4px 3px rgb(0 0 0 / 30%);
+}
+
+h1{
+    font-size: 1.5em;
+    padding-bottom: 0.7em;
+}
+
+.areaInvio{
+    display: flex;
+    border-style: dashed;
+    height: auto;
+    width: 100%;
+    margin: auto;
+}
+
+.areaInvio > label{
+    width: 100%;
+    margin: auto;
+    padding: 3%;
+}
+
+button{
+    color: #000000;
+    font-weight: bold;
+    background-color: #2EE59D;
+    border: 2px solid;
+    font-size: 1em;
+    width: 15em;
+    margin-top: 1em;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+
+button:hover{
+    box-shadow: 0 15px 20px rgba(46, 229, 157, 0.4);
+    transition: all 0.3s ease 0s;
+    width: 15.02em;
+    font-size: 1.1em;
+}
+
+#file-chosen{
+    display: block;
+    margin: auto;
+    padding-top: 1.5em;
+    font-size: 15px;
+    color: white;
+    text-shadow: 2px 4px 3px rgb(0 0 0 / 30%);
+    font-weight: bold;
+    letter-spacing: 2.5px;
+}
+
+.close {
+    text-align: right;
+    margin-top: auto;
+    font-size: 30px;
+}
+
+.close:hover{
+    box-shadow: none;
+    transition: none;
+    width: 100%;
+    font-size: 30px;
+}
+
+.btn{
+    margin: auto;
+}
+
+
+@media screen and (min-width: 420px){
+    .areaInvio{
+        width: 50%;
+    }
+
+    button{
+        width: 19em;
+    }
+
+    button:hover{
+        width: 19.02em;
+    }
+    .image{
+        width: 19em !important;
+    }
+    #file-chosen{
+        font-size: 20px;
+    }
+}
+
+
+/**********************
+* InvioEffettuato.jsp *
+***********************/
+.image {
+    padding-top: 2em;
+    margin: auto;
+    width: 85%;
+}
+
+
+
+

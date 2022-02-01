@@ -1,0 +1,314 @@
+.container-fluid{
+    padding: 0.7em 1.2em 1.2em 1.2em;
+}
+
+.my-row3{
+    display: grid;
+    grid-template-columns: 2.6em auto auto;
+}
+
+
+/*********************
+* INIZIO Navbar di   *
+* GestioneReport.jsp *
+**********************/
+.trash, .download{
+    cursor: pointer;
+    transition: .3s;
+    padding: 2px;
+    width: 37px;
+    height: 37px;
+    box-shadow: 0 15px 20px rgba(46, 229, 157, 0.4);
+    filter: invert(100%) sepia(93%)
+    saturate(26%) hue-rotate(20deg)
+    brightness(106%) contrast(110%);
+}
+
+.trash:hover, .download:hover{
+    filter: invert(0%) sepia(94%)
+    saturate(0%) hue-rotate(259deg)
+    brightness(105%) contrast(105%);
+}
+
+.modal-body > p{
+    color: black;
+    text-align: center;
+    margin: 0;
+}
+
+.btn-primary, .btn-secondary{
+    padding: 2px 12px 2px 12px!important;
+    font-size: 20px;
+}
+
+.btn-primary{
+    background-color: var(--bs-green);
+    border-color: var(--bs-green);
+}
+
+.btn-primary:hover{
+    background-color: var(--greenS);
+    border-color: var(--bs-green);
+    box-shadow: 0 15px 20px rgba(0, 128, 103, 0.4);
+}
+
+.btn-secondary{
+    background-color: var(--bs-danger);
+    border-color: var(--bs-danger);
+}
+
+.btn-secondary:hover{
+    background-color: var(--error);
+    border-color: var(--bs-danger);
+    box-shadow: 0 15px 20px rgba(204, 0, 0, 0.4);
+}
+
+.modal-footer>* {
+    margin: 0 0.25rem 0 1.25em;
+}
+
+.padding{
+    padding: 0.7rem!important;
+}
+
+.coll-5{
+    display: flex;
+    flex-direction: column;
+    flex: 6;
+    transition: all .3s ease-in-out;
+    align-items: end;
+}
+
+.input-group{
+    align-items: end;
+    width: 80%;
+}
+
+input#searchBar{
+    border-radius: 5px 0 0 5px;
+}
+
+.input-group-text{
+    height: 37px;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.input-group > .form-control,
+.input-group > .form-select {
+    height: 37px;
+    min-height: 0;
+    font-size: 18px;
+}
+
+.form-control::placeholder {
+    font-size: 18px;
+}
+
+.input-date{
+    width: 100%;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator{
+    margin: 0;
+}
+
+.input-date > .input-group{
+    padding-top: 0.7em;
+    float: right;
+}
+
+.input > .form-control{
+    padding: 0;
+}
+
+.input > .form-control,
+.input > .form-select {
+    height: 30px;
+    font-size: 16px;
+}
+
+.input-group > span{
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    padding: 0 10px;
+}
+
+.input > input{
+    text-align: center;
+    border-radius: 5px !important;
+}
+
+.input > span{
+    font-size: 22px;
+}
+
+.container-search{
+    z-index: 1;
+    background-color: var(--white);
+    box-shadow: 0 3px 9px 0 rgba(12,18,18,0.4);
+    border-radius: 6px;
+    overflow: auto;
+    height: auto;
+    max-height: 233px;
+    position: relative;
+    color: var(--black);
+    width: 100%
+}
+
+#filter-records{
+    width: 80%;
+    height: 0;
+}
+
+.columnAjax{
+    padding-left: 18px;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.container-search p{
+    font-size: 15px;
+    cursor: pointer;
+    transition: .3s;
+    color: var(--black);
+}
+
+.columnAjax > p {
+    margin-bottom: 0;
+    padding: 9px 3px 9px 5px;
+    border-radius: 10px;
+}
+
+.columnAjax p:hover{
+    background-color: rgba(206, 212, 218,0.55);
+}
+
+.rowAjax {
+    color: var(--black);
+}
+
+.hide{
+    display: none;
+}
+
+
+/*********************
+* INIZIO Table di   *
+* GestioneReport.jsp *
+**********************/
+th{
+    text-align: center;
+}
+
+h4 {
+    margin: 1.7rem 0 1rem;
+}
+
+table{
+    overflow-y: hidden;
+    max-height: 376px;
+    display: block;
+    margin-top: 1.3rem;
+}
+
+.justify-content-center {
+    margin: 0;
+}
+
+.table-image, td, th {
+    vertical-align: middle;
+}
+
+thead{
+    background-color: black;
+    color: white;
+}
+
+th:first-child{
+ width: 102px!important;
+}
+
+th:nth-child(2){
+    width: 38rem!important;
+}
+
+th:nth-child(3){
+    width: 154px!important;
+}
+
+.angle-right{
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.angle-right:hover{
+    background-color: #0A58CA;
+    box-shadow: 0 15px 20px rgba(10, 88, 202, 0.4);
+}
+
+.angle-right > img{
+    width: 49%;
+}
+
+.angle-right > img:hover{
+    filter: invert(24%) sepia(30%)
+    saturate(5582%) hue-rotate(339deg)
+    brightness(97%) contrast(88%);
+    transition: all 0.3s ease 0s;
+}
+
+td a{
+    display: block;
+}
+
+.page-link{
+    font-size: 14px;
+    padding: 0.1rem 0.5rem;
+}
+
+.pagination{
+    margin: 0;
+    justify-content: center;
+}
+
+.btn{
+    padding: 0;
+}
+
+@media screen and (max-width: 768px){
+    .input-group{
+        width: 100%;
+    }
+
+    #filter-records{
+        width: 100%;
+    }
+}
+
+
+/*******************
+* Anteprima Report *
+********************/
+.modal-header{
+    padding: 0 1rem;
+}
+
+.modal-body{
+    padding: 0.5rem;
+}
+
+iframe{
+    width: 100%;
+    height: 20rem;
+}
+
+h5{
+    color: var(--black);
+    font-style: italic !important;
+    font-family: var(--bs-font-monospace) !important;
+    letter-spacing: 2.5px;
+    font-weight: bold;
+    padding: 11px 20px 11px 0;
+    font-size: 21px;
+    text-shadow: 2px 4px 3px rgb(0 0 0 / 30%);
+}

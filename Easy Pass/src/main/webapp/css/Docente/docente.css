@@ -1,0 +1,237 @@
+body {
+    background-color: var(--green);
+    color: var(--white);
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+    margin: 0;
+    overflow-y: auto;
+}
+
+.error{
+    color: var(--error);
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleStudent {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    transition: all 0.3s ease 0s;
+    text-align: center;
+    color: var(--black);
+    padding-bottom: 0.5em;
+    max-width: 11em;
+    margin: auto;
+    font-size: 1.5em;
+}
+
+.coll-2 {
+    display: flex;
+    flex-direction: column;
+    flex: 6;
+    transition: all .3s ease-in-out
+}
+
+.coll-2.full--width{
+    margin-left: -195px;
+}
+
+/*Form*/
+.student-form,
+.student-form *{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.student-form {
+    max-width: 350px;
+    margin: 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.student-form label{
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    font-size: .7em;
+    margin: auto;
+}
+
+.student-form-content{
+    padding: 30px;
+    background: #eeeeee;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.student-form-input{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #dddddd;
+    background: #ffffff;
+    outline: none;
+    transition: border-color 0.5s;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.student-form-input:focus{
+    border-color:#009578;
+}
+
+.student-form-input::placeholder{
+    color: #aaaaaa;
+}
+
+.student-form-button{
+    padding: 10px;
+    color: #ffffff;
+    font-weight: bold;
+    background: #009578;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin-top: 0.5em;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    font-size: 0.9em;
+}
+
+.student-form-button:active{
+    background: #008067;
+}
+
+.student-form-button:hover{
+    background-color: #2EE59D;
+    box-shadow: 0 15px 20px rgba(46, 229, 157, 0.4);
+    transition: all 0.3s ease 0s;
+    color: var(--black);
+}
+
+.avvia-sessione-button{
+    padding: 10px;
+    color: #ffffff;
+    font-weight: bold;
+    background: #007d64;
+    width: 150px;
+    height: 150px;
+    border: none;
+    border-radius: 100%;
+    outline: none;
+    cursor: pointer;
+}
+
+.student-form-button:hover{
+    background-color: #2ee59d;
+    box-shadow: 0 15px 20px rgba(46, 229, 157, 0.4);
+    transition: all 0.3s ease 0s;
+    color: var(--black);
+}
+
+.avvia-sessione-button:hover{
+    background-color: #2EE59D;
+    border-radius: 100%;
+    box-shadow: 0 15px 20px rgba(46, 229, 157, 0.4);
+    transition: all 0.3s ease 0s;
+    color: var(--black);
+}
+
+.termina-sessione-button {
+    padding: 10px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: var(--bs-danger);
+    border-color: var(--bs-danger);
+    border: none;
+    align-self: flex-end;
+    margin: 15px;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.termina-sessione-button:hover{
+    background-color: var(--error);
+    box-shadow: 0 15px 20px rgba(204, 0, 0, 0.4);
+    transition: all 0.3s ease 0s;
+}
+
+/* QRcode style*/
+.qrCode {
+    width: 22%;
+    margin: 0 auto 0 auto;
+    object-fit: contain;
+}
+
+.esitoCounter{
+    font-size: 200%;
+    font-weight: bold;
+    margin: 10px;
+    align-self: flex-start;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+.btnn {
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    color: var(--white);
+    width: 50%;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: bold;
+    border: none;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    padding: 1em;
+    margin: 1em 0 1em 0;
+}
+
+.btnn:hover {
+    background-color: #2EE59D;
+    box-shadow: 0 15px 20px rgba(46, 229, 157, 0.4);
+    color: var(--black);
+    border-radius: 12px;
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate(0, 100%);
+        transform: translate(0, 100%);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate(0, 100%);
+        transform: translate(0, 100%);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+#linkQRcode{
+    text-align: center;
+    padding: 1em 0 0.2em 0;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
