@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-02-03T17:00:07.961625300Z</date>
+  <millis>1643907607961</millis>
+  <nanos>625300</nanos>
+  <sequence>0</sequence>
+  <logger>org.uma.jmetal.util.JMetalLogger</logger>
+  <level>INFO</level>
+  <class>org.uma.jmetal.util.JMetalLogger</class>
+  <method>configureLoggers</method>
+  <thread>1</thread>
+  <message>Loggers configured with null</message>
+</record>
+<record>
+  <date>2022-02-03T17:00:08.024121100Z</date>
+  <millis>1643907608024</millis>
+  <nanos>121100</nanos>
+  <sequence>1</sequence>
+  <logger>org.uma.jmetal.util.JMetalLogger</logger>
+  <level>INFO</level>
+  <class>it.unisa.NQueensStaircaseRunner</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Problem: TwentyQueensStaircase</message>
+</record>
+<record>
+  <date>2022-02-03T17:00:08.024121100Z</date>
+  <millis>1643907608024</millis>
+  <nanos>121100</nanos>
+  <sequence>2</sequence>
+  <logger>org.uma.jmetal.util.JMetalLogger</logger>
+  <level>INFO</level>
+  <class>it.unisa.NQueensStaircaseRunner</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Solutions: 
+[Variables: 10 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 1.0 -13.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 10 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 1.0 -13.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 10 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 1.0 -13.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 10 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 1.0 -13.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 10 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 1.0 -13.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 16 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 0.0 -12.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 10 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 1.0 -13.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 10 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 1.0 -13.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 10 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 1.0 -13.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 10 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 1.0 -13.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 10 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 1.0 -13.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 10 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 1.0 -13.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 10 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 1.0 -13.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 10 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 1.0 -13.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 10 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 1.0 -13.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 10 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 1.0 -13.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 16 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 0.0 -12.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 10 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 1.0 -13.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=Infinity, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 16 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 0.0 -12.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=0.0, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+, Variables: 16 8 6 4 2 14 12 10 19 17 5 3 1 9 7 15 13 11 20 18 Objectives: 0.0 -12.0 Constraints: 	AlgorithmAttributes: {class org.uma.jmetal.util.solutionattribute.impl.CrowdingDistance=0.0, class org.uma.jmetal.util.solutionattribute.impl.DominanceRanking=0, org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking=0}
+]
+</message>
+</record>
+<record>
+  <date>2022-02-03T17:00:08.024121100Z</date>
+  <millis>1643907608024</millis>
+  <nanos>121100</nanos>
+  <sequence>3</sequence>
+  <logger>org.uma.jmetal.util.JMetalLogger</logger>
+  <level>INFO</level>
+  <class>it.unisa.NQueensStaircaseRunner</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Total execution time: 6110 ms</message>
+</record>
+</log>
