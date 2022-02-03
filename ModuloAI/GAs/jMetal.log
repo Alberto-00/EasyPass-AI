@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-02-03T18:06:39.010024400Z</date>
+  <millis>1643911599010</millis>
+  <nanos>24400</nanos>
+  <sequence>0</sequence>
+  <logger>org.uma.jmetal.util.JMetalLogger</logger>
+  <level>INFO</level>
+  <class>org.uma.jmetal.util.JMetalLogger</class>
+  <method>configureLoggers</method>
+  <thread>1</thread>
+  <message>Loggers configured with null</message>
+</record>
+<record>
+  <date>2022-02-03T18:06:39.116022200Z</date>
+  <millis>1643911599116</millis>
+  <nanos>22200</nanos>
+  <sequence>1</sequence>
+  <logger>org.uma.jmetal.util.JMetalLogger</logger>
+  <level>INFO</level>
+  <class>it.unisa.NQueensRunner</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Problem: EightQueens</message>
+</record>
+<record>
+  <date>2022-02-03T18:06:39.118027100Z</date>
+  <millis>1643911599118</millis>
+  <nanos>27100</nanos>
+  <sequence>2</sequence>
+  <logger>org.uma.jmetal.util.JMetalLogger</logger>
+  <level>INFO</level>
+  <class>it.unisa.NQueensRunner</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Solution: [6, 4, 1, 5, 8, 2, 7, 3]</message>
+</record>
+<record>
+  <date>2022-02-03T18:06:39.120022300Z</date>
+  <millis>1643911599120</millis>
+  <nanos>22300</nanos>
+  <sequence>3</sequence>
+  <logger>org.uma.jmetal.util.JMetalLogger</logger>
+  <level>INFO</level>
+  <class>it.unisa.NQueensRunner</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Evaluation: [0.0]</message>
+</record>
+<record>
+  <date>2022-02-03T18:06:39.121024700Z</date>
+  <millis>1643911599121</millis>
+  <nanos>24700</nanos>
+  <sequence>4</sequence>
+  <logger>org.uma.jmetal.util.JMetalLogger</logger>
+  <level>INFO</level>
+  <class>it.unisa.NQueensRunner</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Total execution time: 216 ms</message>
+</record>
+</log>
