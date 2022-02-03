@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-02-03T09:40:23.638791Z</date>
+  <millis>1643881223638</millis>
+  <nanos>791000</nanos>
+  <sequence>0</sequence>
+  <logger>org.uma.jmetal.util.JMetalLogger</logger>
+  <level>INFO</level>
+  <class>org.uma.jmetal.util.JMetalLogger</class>
+  <method>configureLoggers</method>
+  <thread>1</thread>
+  <message>Loggers configured with null</message>
+</record>
+<record>
+  <date>2022-02-03T09:40:23.657969Z</date>
+  <millis>1643881223657</millis>
+  <nanos>969000</nanos>
+  <sequence>1</sequence>
+  <logger>org.uma.jmetal.util.JMetalLogger</logger>
+  <level>INFO</level>
+  <class>it.unisa.sesalab.ga.examples.NQueensRunner</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Problem: EightQueens</message>
+</record>
+<record>
+  <date>2022-02-03T09:40:23.658302Z</date>
+  <millis>1643881223658</millis>
+  <nanos>302000</nanos>
+  <sequence>2</sequence>
+  <logger>org.uma.jmetal.util.JMetalLogger</logger>
+  <level>INFO</level>
+  <class>it.unisa.sesalab.ga.examples.NQueensRunner</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Solution: [7, 15, 13, 11, 1, 17, 5, 16, 10, 12, 3, 6, 18, 14, 19, 4, 20, 8, 2, 9]</message>
+</record>
+<record>
+  <date>2022-02-03T09:40:23.658619Z</date>
+  <millis>1643881223658</millis>
+  <nanos>619000</nanos>
+  <sequence>3</sequence>
+  <logger>org.uma.jmetal.util.JMetalLogger</logger>
+  <level>INFO</level>
+  <class>it.unisa.sesalab.ga.examples.NQueensRunner</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Evaluation: [0.0]</message>
+</record>
+<record>
+  <date>2022-02-03T09:40:23.658903Z</date>
+  <millis>1643881223658</millis>
+  <nanos>903000</nanos>
+  <sequence>4</sequence>
+  <logger>org.uma.jmetal.util.JMetalLogger</logger>
+  <level>INFO</level>
+  <class>it.unisa.sesalab.ga.examples.NQueensRunner</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Total execution time: 1252 ms</message>
+</record>
+</log>

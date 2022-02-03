@@ -2,7 +2,7 @@ package it.unisa.sesalab.ga.examples;
 
 import it.unisa.sesalab.ga.examples.fix.IntegerNPointCrossover;
 import it.unisa.sesalab.ga.examples.problem.NQueensProblem;
-import it.unisa.sesalab.ga.examples.problem.NQueensStaircaseProblem;
+//import it.unisa.sesalab.ga.examples.problem.NQueensStaircaseProblem;
 import org.uma.jmetal.algorithm.Algorithm;
 import org.uma.jmetal.algorithm.multiobjective.nsgaii.NSGAII;
 import org.uma.jmetal.algorithm.multiobjective.nsgaii.NSGAIIBuilder;
@@ -21,12 +21,12 @@ import java.util.List;
 public class NQueensRunner {
 
     public static void main(String[] args) {
-        int chessSize = 8;
+        int chessSize = 20;
 
         double crossoverProbability = 0.8;
         double mutationProbability = 0.01;
-        int maxEvaluations = 10000;
-        int populationSize = 100;
+        int maxEvaluations = 1000000;
+        int populationSize = 1000;
 
         Problem<IntegerSolution> problem = new NQueensProblem("EightQueens", chessSize);
         BinaryTournamentSelection<IntegerSolution> selection = new BinaryTournamentSelection<>();
