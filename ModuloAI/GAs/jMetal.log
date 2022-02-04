@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2022-02-03T18:06:39.010024400Z</date>
-  <millis>1643911599010</millis>
-  <nanos>24400</nanos>
+  <date>2022-02-04T17:18:31.479273100Z</date>
+  <millis>1643995111479</millis>
+  <nanos>273100</nanos>
   <sequence>0</sequence>
   <logger>org.uma.jmetal.util.JMetalLogger</logger>
   <level>INFO</level>
@@ -14,51 +14,51 @@
   <message>Loggers configured with null</message>
 </record>
 <record>
-  <date>2022-02-03T18:06:39.116022200Z</date>
-  <millis>1643911599116</millis>
-  <nanos>22200</nanos>
+  <date>2022-02-04T17:18:31.517241200Z</date>
+  <millis>1643995111517</millis>
+  <nanos>241200</nanos>
   <sequence>1</sequence>
   <logger>org.uma.jmetal.util.JMetalLogger</logger>
   <level>INFO</level>
-  <class>it.unisa.NQueensRunner</class>
+  <class>it.unisa.NStudentsRunner</class>
   <method>main</method>
   <thread>1</thread>
-  <message>Problem: EightQueens</message>
+  <message>Problem: NStudentsProblem</message>
 </record>
 <record>
-  <date>2022-02-03T18:06:39.118027100Z</date>
-  <millis>1643911599118</millis>
-  <nanos>27100</nanos>
+  <date>2022-02-04T17:18:31.518250600Z</date>
+  <millis>1643995111518</millis>
+  <nanos>250600</nanos>
   <sequence>2</sequence>
   <logger>org.uma.jmetal.util.JMetalLogger</logger>
   <level>INFO</level>
-  <class>it.unisa.NQueensRunner</class>
+  <class>it.unisa.NStudentsRunner</class>
   <method>main</method>
   <thread>1</thread>
-  <message>Solution: [6, 4, 1, 5, 8, 2, 7, 3]</message>
+  <message>Solution: [8, 0, 5, 10, 7, 1, 2, 9, 3, 8, 1, 1, 3, 2, 6, 0, 0, 0, 5, 4, 3, 4, 0, 0, 4, 11, 4, 3, 3, 4, 8, 6, 0, 0, 0, 3, 3, 10, 4, 9, 7, 10, 2, 5, 8, 2, 0, 7, 8, 5, 2, 11, 6, 3, 5, 8, 0, 11, 4, 0, 2, 9, 9, 1, 2, 11, 1, 8, 1, 6, 6, 11, 0, 0, 0, 9, 6, 7, 5, 8, 2, 0, 2, 11, 4, 11, 4, 7, 6, 7, 7, 4, 6, 11, 0, 7, 0, 11, 5, 6, 5, 2, 0, 9, 2, 11, 2, 7, 8, 2, 1, 4, 6, 9, 4, 5, 0, 5, 6, 7, 3, 6, 5, 4, 8, 8, 1, 10, 5, 2]</message>
 </record>
 <record>
-  <date>2022-02-03T18:06:39.120022300Z</date>
-  <millis>1643911599120</millis>
-  <nanos>22300</nanos>
+  <date>2022-02-04T17:18:31.520262200Z</date>
+  <millis>1643995111520</millis>
+  <nanos>262200</nanos>
   <sequence>3</sequence>
   <logger>org.uma.jmetal.util.JMetalLogger</logger>
   <level>INFO</level>
-  <class>it.unisa.NQueensRunner</class>
+  <class>it.unisa.NStudentsRunner</class>
   <method>main</method>
   <thread>1</thread>
-  <message>Evaluation: [0.0]</message>
+  <message>Evaluation: [21.0, -21.0]</message>
 </record>
 <record>
-  <date>2022-02-03T18:06:39.121024700Z</date>
-  <millis>1643911599121</millis>
-  <nanos>24700</nanos>
+  <date>2022-02-04T17:18:31.521243800Z</date>
+  <millis>1643995111521</millis>
+  <nanos>243800</nanos>
   <sequence>4</sequence>
   <logger>org.uma.jmetal.util.JMetalLogger</logger>
   <level>INFO</level>
-  <class>it.unisa.NQueensRunner</class>
+  <class>it.unisa.NStudentsRunner</class>
   <method>main</method>
   <thread>1</thread>
-  <message>Total execution time: 216 ms</message>
+  <message>Total execution time: 1387 ms</message>
 </record>
 </log>
