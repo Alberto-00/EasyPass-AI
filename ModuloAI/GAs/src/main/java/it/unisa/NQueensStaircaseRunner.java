@@ -21,7 +21,7 @@ public class NQueensStaircaseRunner {
 
         double crossoverProbability = 0.8;
         double mutationProbability = 0.01;
-        int maxEvaluations = 1000000;
+        int maxEvaluations = 10000;
         int populationSize = 20;
 
         Problem<IntegerSolution> problem = new NQueensStaircaseProblem("TwentyQueensStaircase", chessSize);
