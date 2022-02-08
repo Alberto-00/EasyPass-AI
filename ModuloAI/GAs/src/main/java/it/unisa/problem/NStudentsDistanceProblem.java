@@ -9,6 +9,7 @@ import java.util.List;
 public class NStudentsDistanceProblem extends AbstractIntegerProblem {
 
     private final int COL, ROW;
+    private final int[][] roomSize;
 
     public NStudentsDistanceProblem(String name, int row, int col, int students){
         if (row < 5 || col < 5)
@@ -19,6 +20,7 @@ public class NStudentsDistanceProblem extends AbstractIntegerProblem {
 
         this.ROW = row;
         this.COL = col;
+        this.roomSize = new int[ROW][COL];
 
         setName(name);
         setNumberOfVariables(students);
@@ -43,7 +45,6 @@ public class NStudentsDistanceProblem extends AbstractIntegerProblem {
 
     private int calculateConflicts(List<Integer> encoding) {
         int conflicts = 0;
-        int[][] roomSize = new int[ROW][COL];
         int x, y;
 
         for (int i = 0; i < encoding.size(); i += 2){
@@ -81,5 +82,9 @@ public class NStudentsDistanceProblem extends AbstractIntegerProblem {
 
     public int getROW(){
         return ROW;
+    }
+
+    public int[][] getRoomSize() {
+        return roomSize;
     }
 }
