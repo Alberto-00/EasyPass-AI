@@ -12,7 +12,7 @@ public class NStudentsDistanceProblem extends AbstractIntegerProblem {
     private final int[][] roomSize;
 
     public NStudentsDistanceProblem(String name, int row, int col, int students){
-        if (row < 5 || col < 5)
+        if ((row < 6 || row > 20) || (col < 6 || col > 20))
             throw new IllegalArgumentException("Cannot set room size to rows and columns lower than 5.");
 
         if (students == 0 || students > (row * col)/2)
