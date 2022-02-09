@@ -25,13 +25,7 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
     private int calculateVisionRange(List<Integer> encoding){
         int[][] roomSize = super.getRoomSize();
         int seatingScore = 0;
-        int x = 0,y = 0;
-
-        for (int i = 0; i < encoding.size(); i += 2){
-            x = encoding.get(i);
-            y = encoding.get(i + 1);
-            roomSize[x][y] = 1;
-        }
+        int x = 0, y = 0;
 
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
@@ -46,24 +40,52 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
     }
 
     private void calculateSectors(){
-        int rowDivision = super.getROW()/3;
-        int colDivision = super.getCOL()/3;
+        int countSectors = 0;
+        for (int row = 0; row < super.getROW(); row += 3){
+            for (int col = 0; col < super.getCOL(); col += 3, countSectors++){
+                ArrayList<Integer> sectors = new ArrayList<>();
+                sectors.add(row); sectors.add(col);
+
+                if (row + 2 < super.getROW()){
+                    sectors.add(row + 2);
+                } else if (row + 1 < super.getROW()){
+                    sectors.add(row + 1);
+                } else sectors.add(row);
+
+                if (col + 2 < super.getCOL()){
+                    sectors.add(col + 2);
+                } else if (col + 1 < super.getCOL()) {
+                    sectors.add(col + 1);
+                } else sectors.add(col);
+
+                sectors.add(33);
+                matrixSectors.put("Sectors" + countSectors, sectors);
+            }
+        }
+        System.out.println(matrixSectors);
+    }
+
+   /* private void calculateSectors(){
+        int rowDivision = super.getROW()/3 - 1;
+        int colDivision = super.getCOL()/3 - 1;
         //da implementare considerando le approssimazioni
         int rowCounter = 0;
 
+        //Divisione in settori
         for (int i = 0; i < 9; i++){
-            ArrayList<Integer> sector = new ArrayList<Integer>();
             int module = i % 3;
+            ArrayList<Integer> sector = new ArrayList<>();
             sector.add(rowDivision * rowCounter);
-            if (module != 0){
-                sector.add((colDivision * module)+1);
-            } else {
-                sector.add(colDivision * module);
-            }
 
-            sector.add(rowDivision * (rowCounter+1));
-            sector.add(colDivision * (module+1));
+            if (module != 0)
+                sector.add((colDivision * module) + 1);
+            else
+                sector.add(0);
 
+            sector.add(rowDivision * (rowCounter + 1));
+            sector.add(colDivision * (module + 1));
+
+            //Assegnazione del Punteggio
             if(module == 1){
                 sector.add(4 - rowCounter);
             } else {
@@ -73,5 +95,6 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
             }
             matrixSectors.put("sector"+i, sector);
         }
-    }
+        System.out.println(matrixSectors);
+    }*/
 }
