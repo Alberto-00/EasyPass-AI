@@ -8,14 +8,18 @@ import java.util.*;
 public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
 
     private final TreeMap<String, ArrayList<Integer>> matrixSectors;
+    private final int[][] seatingScore;
 
     public NStudentsVisionRangeProblem(String name, int row, int col, int students){
         super(name, row, col, students);
         matrixSectors = new TreeMap<>(new SectorsComparator());
+        seatingScore = new int[row][col];
         calculateSectors();
+        calculateSeatingScore();
         setNumberOfObjectives(2);
     }
 
+    //Funzione di massimizzazione
     @Override
     public void evaluate(IntegerSolution integerSolution) {
         super.evaluate(integerSolution);
@@ -77,5 +81,28 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
             }
         }
        System.out.println(matrixSectors);
+    }
+
+    private void calculateSeatingScore(){
+        int[][] roomSize = super.getRoomSize();
+        int rowDivision;
+        int colDivision;
+
+        if (super.getROW() % 3 != 0)
+            rowDivision = (super.getROW() / 3) + 1;
+        else rowDivision = (super.getROW() / 3);
+
+        if (super.getCOL() % 3 != 0)
+            colDivision = (super.getCOL() / 3) + 1;
+        else colDivision = (super.getCOL() / 3);
+
+        for (int row = 0; row < super.getROW(); row++) {
+            for (int col = 0; col < super.getCOL(); col++) {
+                if (roomSize[row][col] == 1) {
+                    seatingScore[row][col] = ;
+                }
+            }
+
+        }
     }
 }

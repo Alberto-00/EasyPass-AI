@@ -37,6 +37,7 @@ public class NStudentsDistanceProblem extends AbstractIntegerProblem {
         setNumberOfObjectives(1);
     }
 
+    //Funzione di minimizzazzione
     @Override
     public void evaluate(IntegerSolution integerSolution) {
         int conflicts = calculateConflicts(integerSolution.getVariables());
