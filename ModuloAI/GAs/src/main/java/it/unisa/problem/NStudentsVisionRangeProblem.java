@@ -1,21 +1,21 @@
 package it.unisa.problem;
 
-import it.unisa.utils.SectorsComparator;
 import org.uma.jmetal.solution.integersolution.IntegerSolution;
 
 import java.util.*;
 
 public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
 
-    private final TreeMap<String, ArrayList<Integer>> matrixSectors;
+    private final TreeMap<Integer, ArrayList<Integer>> matrixSectors;
     private final int[][] seatingScore;
 
     public NStudentsVisionRangeProblem(String name, int row, int col, int students){
         super(name, row, col, students);
-        matrixSectors = new TreeMap<>(new SectorsComparator());
+
+        matrixSectors = new TreeMap<>();
         seatingScore = new int[row][col];
+
         calculateSectors();
-        calculateSeatingScore();
         setNumberOfObjectives(2);
     }
 
@@ -23,24 +23,21 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
     @Override
     public void evaluate(IntegerSolution integerSolution) {
         super.evaluate(integerSolution);
+        calculateSeatingScore();
+
         int visionRange = calculateVisionRange(integerSolution.getVariables());
-        integerSolution.getObjectives()[1] = -1.0 * visionRange;
+        //integerSolution.getObjectives()[1] = -1.0 * visionRange;
     }
 
     private int calculateVisionRange(List<Integer> encoding){
-        int[][] roomSize = super.getRoomSize();
         int seatingScore = 0;
-        int x = 0, y = 0;
 
-        for (int i = 0; i < x; i++) {
-            for (int j = 0; j < y; j++) {
-                if (roomSize[i][j] == 1) {
-                    seatingScore += 1;
-                }
-            }
+        for (int i = 0; i < encoding.size(); i += 2){
+            int x = encoding.get(i);
+            int y = encoding.get(i + 1);
 
+            seatingScore += this.seatingScore[x][y];
         }
-
         return seatingScore;
     }
 
@@ -77,32 +74,40 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
                 }
                 //Assegnazione Punteggio
                 sectors.add(score[countSectors]);
-                matrixSectors.put("Sectors" + countSectors, sectors);
+                matrixSectors.put(countSectors, sectors);
             }
         }
-       System.out.println(matrixSectors);
     }
 
     private void calculateSeatingScore(){
         int[][] roomSize = super.getRoomSize();
-        int rowDivision;
-        int colDivision;
-
-        if (super.getROW() % 3 != 0)
-            rowDivision = (super.getROW() / 3) + 1;
-        else rowDivision = (super.getROW() / 3);
-
-        if (super.getCOL() % 3 != 0)
-            colDivision = (super.getCOL() / 3) + 1;
-        else colDivision = (super.getCOL() / 3);
 
         for (int row = 0; row < super.getROW(); row++) {
             for (int col = 0; col < super.getCOL(); col++) {
                 if (roomSize[row][col] == 1) {
-                    seatingScore[row][col] = ;
+                    setScore(row, col);
                 }
             }
+        }
+    }
 
+    private void setScore(int row, int col){
+        int firstX, firstY;
+        int secondX, secondY;
+        int score;
+
+        for (int i = 0; i < matrixSectors.size(); i++){
+            firstX = matrixSectors.get(i).get(0);
+            firstY = matrixSectors.get(i).get(1);
+
+            secondX = matrixSectors.get(i).get(2);
+            secondY = matrixSectors.get(i).get(3);
+
+            score = matrixSectors.get(i).get(4);
+
+            if ((row >= firstX && row <= secondX) &&
+                    (col >= firstY && col <= secondY))
+                seatingScore[row][col] = score;
         }
     }
 }

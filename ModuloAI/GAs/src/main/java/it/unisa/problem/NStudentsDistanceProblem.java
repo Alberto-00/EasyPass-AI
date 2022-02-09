@@ -46,11 +46,10 @@ public class NStudentsDistanceProblem extends AbstractIntegerProblem {
 
     private int calculateConflicts(List<Integer> encoding) {
         int conflicts = 0;
-        int x, y;
 
         for (int i = 0; i < encoding.size(); i += 2){
-            x = encoding.get(i);
-            y = encoding.get(i + 1);
+            int x = encoding.get(i);
+            int y = encoding.get(i + 1);
             if (roomSize[x][y] == 1)
                 conflicts++;
             else roomSize[x][y] = 1;
