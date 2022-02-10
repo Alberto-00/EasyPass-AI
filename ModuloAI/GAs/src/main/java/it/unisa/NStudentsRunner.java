@@ -11,6 +11,7 @@ import org.uma.jmetal.operator.mutation.impl.IntegerPolynomialMutation;
 import org.uma.jmetal.operator.selection.impl.BinaryTournamentSelection;
 import org.uma.jmetal.problem.Problem;
 import org.uma.jmetal.solution.integersolution.IntegerSolution;
+import org.uma.jmetal.util.ConstraintHandling;
 import org.uma.jmetal.util.JMetalLogger;
 import org.uma.jmetal.util.comparator.RankingAndCrowdingDistanceComparator;
 
@@ -44,7 +45,12 @@ public class NStudentsRunner {
         AlgorithmRunner nsgaiiRunner = new AlgorithmRunner.Executor(nsgaii).execute();
         List<IntegerSolution> bestIndividuals = nsgaii.getResult();
 
-
+        for (IntegerSolution solution : bestIndividuals) {
+            problem.evaluate(solution);
+            if (problem instanceof ConstrainedProblem) {
+                ((ConstrainedProblem<IntegerSolution>) problem).evaluateConstraints(solution);
+            }
+        }
 
 
         JMetalLogger.logger.info(String.format("Problem: %s", problem.getName()));

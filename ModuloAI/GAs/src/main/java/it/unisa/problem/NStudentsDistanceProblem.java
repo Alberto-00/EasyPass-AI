@@ -51,7 +51,7 @@ public class NStudentsDistanceProblem extends AbstractIntegerProblem implements 
         int conflicts = calculateConflicts(integerSolution.getVariables());
         integerSolution.getObjectives()[0] = conflicts;
 
-        evaluateConstraints(integerSolution);
+        //evaluateConstraints(integerSolution);
     }
 
     private int calculateConflicts(List<Integer> encoding) {
@@ -93,15 +93,24 @@ public class NStudentsDistanceProblem extends AbstractIntegerProblem implements 
         double[] constraint = new double[this.getNumberOfConstraints()];
         List<Integer> encoding = solution.getVariables();
         constraint[0] = 0;
+        boolean flag = false;
 
-        for (int i = 0, j = 0; i < encoding.size(); i += 2){
+        for (int i = 0; i < encoding.size() - 3; i += 2){
             int x = encoding.get(i);
             int y = encoding.get(i + 1);
-
-            if (roomSize[x][y] == 1) {
+            for (int j = i+2; j < encoding.size(); j+=2) {
+                if (x == encoding.get(j) && y == encoding.get(j+1)){
+                    constraint[0] = -1.0;
+                    flag = true;
+                    break;
+                }
+            }
+            /*if (roomSize[x][y] == 1) {
                 constraint[j] = -1.0;
                 break;
-            }
+            }*/
+            if (flag)
+                break;
         }
         double overallConstraintViolation = 0.0;
         int violatedConstraints = 0;
