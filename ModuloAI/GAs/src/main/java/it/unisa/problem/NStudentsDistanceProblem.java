@@ -8,7 +8,7 @@ import org.uma.jmetal.util.solutionattribute.impl.OverallConstraintViolation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NStudentsDistanceProblem extends AbstractIntegerProblem {
+public class NStudentsDistanceProblem extends AbstractIntegerProblem implements ConstrainedProblem<IntegerSolution>{
 
     private final int COL, ROW;
     private int[][] roomSize;
@@ -61,8 +61,9 @@ public class NStudentsDistanceProblem extends AbstractIntegerProblem {
         for (int i = 0; i < encoding.size(); i += 2){
             int x = encoding.get(i);
             int y = encoding.get(i + 1);
-           if (roomSize[x][y] == 1)
-                conflicts++;
+
+            if (roomSize[x][y] == 1)
+                conflicts+=1000;
             else roomSize[x][y] = 1;
         }
         for (int row = 0; row < this.ROW; row++){
@@ -87,6 +88,7 @@ public class NStudentsDistanceProblem extends AbstractIntegerProblem {
         return conflicts;
     }
 
+    @Override
     public void evaluateConstraints(IntegerSolution solution)  {
         double[] constraint = new double[this.getNumberOfConstraints()];
         List<Integer> encoding = solution.getVariables();
@@ -97,7 +99,7 @@ public class NStudentsDistanceProblem extends AbstractIntegerProblem {
             int y = encoding.get(i + 1);
 
             if (roomSize[x][y] == 1) {
-                constraint[j] = -1;
+                constraint[j] = -1.0;
                 break;
             }
         }
