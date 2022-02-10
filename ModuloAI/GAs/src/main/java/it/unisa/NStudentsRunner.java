@@ -1,7 +1,6 @@
 package it.unisa;
 
 import it.unisa.fix.IntegerNPointCrossover;
-import it.unisa.problem.ConstrainedProblem;
 import it.unisa.problem.NStudentsVisionRangeProblem;
 import org.uma.jmetal.algorithm.multiobjective.nsgaii.NSGAII;
 import org.uma.jmetal.algorithm.multiobjective.nsgaii.NSGAIIBuilder;
@@ -15,6 +14,7 @@ import org.uma.jmetal.util.ConstraintHandling;
 import org.uma.jmetal.util.JMetalLogger;
 import org.uma.jmetal.util.comparator.RankingAndCrowdingDistanceComparator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NStudentsRunner {
@@ -43,15 +43,12 @@ public class NStudentsRunner {
                 .build();
 
         AlgorithmRunner nsgaiiRunner = new AlgorithmRunner.Executor(nsgaii).execute();
-        List<IntegerSolution> bestIndividuals = nsgaii.getResult();
+        List<IntegerSolution> bestIndividuals = new ArrayList<>();
 
-        for (IntegerSolution solution : bestIndividuals) {
-            problem.evaluate(solution);
-            if (problem instanceof ConstrainedProblem) {
-                ((ConstrainedProblem<IntegerSolution>) problem).evaluateConstraints(solution);
-            }
+        for (IntegerSolution solution: nsgaii.getResult()) {
+            if (ConstraintHandling.isFeasible(solution))
+                bestIndividuals.add(solution);
         }
-
 
         JMetalLogger.logger.info(String.format("Problem: %s", problem.getName()));
         JMetalLogger.logger.info(String.format("Solutions: \n%s\n", bestIndividuals));

@@ -51,7 +51,7 @@ public class NStudentsDistanceProblem extends AbstractIntegerProblem implements 
         int conflicts = calculateConflicts(integerSolution.getVariables());
         integerSolution.getObjectives()[0] = conflicts;
 
-        //evaluateConstraints(integerSolution);
+        evaluateConstraints(integerSolution);
     }
 
     private int calculateConflicts(List<Integer> encoding) {
