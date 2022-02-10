@@ -26,7 +26,7 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
         calculateSeatingScore();
 
         int visionRange = calculateVisionRange(integerSolution.getVariables());
-        //integerSolution.getObjectives()[1] = -1.0 * visionRange;
+        integerSolution.getObjectives()[1] = -1.0 * visionRange;
     }
 
     private int calculateVisionRange(List<Integer> encoding){

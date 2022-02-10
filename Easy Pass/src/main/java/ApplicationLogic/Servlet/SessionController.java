@@ -145,6 +145,9 @@ public class SessionController extends ServletLogic {
                     } else
                         throw new InvalidRequestException("Non sei Autorizzato", List.of("Non sei Autorizzato"), HttpServletResponse.SC_FORBIDDEN);
                 }
+                case "/disposizione" -> {
+                    request.getRequestDispatcher(view("DocenteGUI/DisposizioneStudenti")).forward(request, response);
+                }
             }
         } catch (InvalidRequestException e) {
             e.printStackTrace();

@@ -2,6 +2,8 @@ package it.unisa.problem;
 
 import org.uma.jmetal.problem.integerproblem.impl.AbstractIntegerProblem;
 import org.uma.jmetal.solution.integersolution.IntegerSolution;
+import org.uma.jmetal.util.solutionattribute.impl.NumberOfViolatedConstraints;
+import org.uma.jmetal.util.solutionattribute.impl.OverallConstraintViolation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +11,9 @@ import java.util.List;
 public class NStudentsDistanceProblem extends AbstractIntegerProblem {
 
     private final int COL, ROW;
-    private final int[][] roomSize;
+    private int[][] roomSize;
+    private final OverallConstraintViolation<IntegerSolution> overallConstraintViolationDegree ;
+    private final NumberOfViolatedConstraints<IntegerSolution> numberOfViolatedConstraints ;
 
     public NStudentsDistanceProblem(String name, int row, int col, int students){
         if ((row < 6 || row > 20) || (col < 6 || col > 20))
@@ -22,7 +26,12 @@ public class NStudentsDistanceProblem extends AbstractIntegerProblem {
         this.COL = col;
         this.roomSize = new int[ROW][COL];
 
+        overallConstraintViolationDegree = new OverallConstraintViolation<>() ;
+        numberOfViolatedConstraints = new NumberOfViolatedConstraints<>() ;
+
         setName(name);
+        setNumberOfObjectives(1);
+        setNumberOfConstraints(1);
         setNumberOfVariables(students);
 
         List<Integer> lowerBounds = new ArrayList<>();
@@ -34,23 +43,25 @@ public class NStudentsDistanceProblem extends AbstractIntegerProblem {
             upperBounds.add(COL - 1);
         }
         setVariableBounds(lowerBounds, upperBounds);
-        setNumberOfObjectives(1);
     }
 
-    //Funzione di minimizzazzione
+    //Funzione di minimizzazzione e vincoli
     @Override
     public void evaluate(IntegerSolution integerSolution) {
         int conflicts = calculateConflicts(integerSolution.getVariables());
         integerSolution.getObjectives()[0] = conflicts;
+
+        evaluateConstraints(integerSolution);
     }
 
     private int calculateConflicts(List<Integer> encoding) {
         int conflicts = 0;
+        this.roomSize = new int[ROW][COL];
 
         for (int i = 0; i < encoding.size(); i += 2){
             int x = encoding.get(i);
             int y = encoding.get(i + 1);
-            if (roomSize[x][y] == 1)
+           if (roomSize[x][y] == 1)
                 conflicts++;
             else roomSize[x][y] = 1;
         }
@@ -74,6 +85,33 @@ public class NStudentsDistanceProblem extends AbstractIntegerProblem {
             }
         }
         return conflicts;
+    }
+
+    public void evaluateConstraints(IntegerSolution solution)  {
+        double[] constraint = new double[this.getNumberOfConstraints()];
+        List<Integer> encoding = solution.getVariables();
+        constraint[0] = 0;
+
+        for (int i = 0, j = 0; i < encoding.size(); i += 2){
+            int x = encoding.get(i);
+            int y = encoding.get(i + 1);
+
+            if (roomSize[x][y] == 1) {
+                constraint[j] = -1;
+                break;
+            }
+        }
+        double overallConstraintViolation = 0.0;
+        int violatedConstraints = 0;
+
+        for (int i = 0; i < this.getNumberOfConstraints(); i++) {
+            if (constraint[i] < 0.0) {
+                overallConstraintViolation += constraint[i];
+                violatedConstraints++;
+            }
+        }
+        overallConstraintViolationDegree.setAttribute(solution, overallConstraintViolation);
+        numberOfViolatedConstraints.setAttribute(solution, violatedConstraints);
     }
 
     public int getCOL(){

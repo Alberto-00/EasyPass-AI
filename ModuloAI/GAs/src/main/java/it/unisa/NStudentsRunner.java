@@ -27,7 +27,7 @@ public class NStudentsRunner {
 
         double crossoverProbability = 0.8;
         double mutationProbability = 0.01;
-        int maxEvaluations = 100000;
+        int maxEvaluations = 1000000;
         int populationSize = 100;
 
         Problem<IntegerSolution> problem = new NStudentsVisionRangeProblem("Vision Range Problem", ROW, COL, students);
@@ -45,7 +45,6 @@ public class NStudentsRunner {
 
         JMetalLogger.logger.info(String.format("Problem: %s", problem.getName()));
         JMetalLogger.logger.info(String.format("Solutions: \n%s\n", bestIndividuals));
-        // TODO Do not return identical solutions
         JMetalLogger.logger.info(String.format("Total execution time: %s ms", nsgaiiRunner.getComputingTime()));
     }
 }
