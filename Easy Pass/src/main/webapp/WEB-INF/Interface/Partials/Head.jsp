@@ -47,6 +47,12 @@
     </c:forTokens>
 </c:if>
 
+<c:if test="${not empty param.moduloAIStyles}">
+    <c:forTokens items="${param.moduloAIStyles}" delims="," var="moduloAIStyle">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ModuloAI/${moduloAIStyle}.css">
+    </c:forTokens>
+</c:if>
+
 <script src="${pageContext.request.contextPath}/frontend-lib/bootstrap-5.1.3/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-validate-plugin.js"></script>
@@ -72,5 +78,11 @@
 <c:if test="${not empty param.studenteScripts}">
     <c:forTokens items="${param.studenteScripts}" delims="," var="studenteScript">
         <script src="${pageContext.request.contextPath}/js/Studente/${studenteScript}.js" defer></script>
+    </c:forTokens>
+</c:if>
+
+<c:if test="${not empty param.moduloAIScripts}">
+    <c:forTokens items="${param.moduloAIScripts}" delims="," var="moduloAIScript">
+        <script src="${pageContext.request.contextPath}/js/ModuloAI/${moduloAIScript}.js" defer></script>
     </c:forTokens>
 </c:if>

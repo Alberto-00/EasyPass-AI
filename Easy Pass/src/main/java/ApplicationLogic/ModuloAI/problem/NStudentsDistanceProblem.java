@@ -90,7 +90,7 @@ public class NStudentsDistanceProblem extends AbstractIntegerProblem implements 
 
     @Override
     public void evaluateConstraints(IntegerSolution solution)  {
-        double[] constraint = new double[1];
+        double[] constraint = new double[this.getNumberOfConstraints()];
         constraint[0] = 0;
         List<Integer> encoding = solution.getVariables();
         boolean flag = false;

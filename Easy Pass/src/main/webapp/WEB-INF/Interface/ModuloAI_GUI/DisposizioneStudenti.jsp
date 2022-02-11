@@ -3,8 +3,8 @@
 <html lang="it">
 <head>
     <jsp:include page="/WEB-INF/Interface/Partials/Head.jsp">
-        <jsp:param name="docenteStyles" value="docente,seatchart"/>
-
+        <jsp:param name="docenteStyles" value="docente"/>
+        <jsp:param name="moduloAIStyles" value="seatchart"/>
         <jsp:param name="title" value="Easy Pass | Docente"/>
     </jsp:include>
 
@@ -15,21 +15,6 @@
             justify-content: center;
             margin-top: 40px;
         }
-
-        .right {
-            display: flex;
-            flex-direction: column;
-            margin-left: 80px;
-        }
-
-        #map-container {
-            display: flex;
-            align-items: center;
-        }
-
-        #legend-container {
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
@@ -37,7 +22,7 @@
     <div id="map-container"></div>
 </div>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/Docente/seatchart.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/ModuloAI/seatchart.js"></script>
 
 <script>
     const options = {
