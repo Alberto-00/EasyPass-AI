@@ -1,0 +1,11 @@
+{
+  "room":[
+    {"name": "P1", "row": 10, "col": 13, "students": 13},
+    {"name": "P2", "row": 9, "col": 7, "students": 10},
+    {"name": "P3", "row": 12, "col": 8, "students": 15},
+    {"name": "P4", "row": 8, "col": 9, "students": 25},
+    {"name": "F8", "row": 7, "col": 9, "students": 20},
+    {"name": "F7", "row": 11, "col": 13, "students": 20},
+    {"name": "F6", "row": 7, "col": 6, "students": 5}
+  ]
+}

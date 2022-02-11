@@ -1,19 +1,17 @@
 package ApplicationLogic.ModuloAI;
-import ApplicationLogic.ModuloAI.fix.IntegerNPointCrossover;
+import ApplicationLogic.ModuloAI.fix.DoubleNPointCrossover;
+import ApplicationLogic.ModuloAI.fix.DoublePolynomialMutation;
 import ApplicationLogic.ModuloAI.problem.NStudentsVisionRangeProblem;
 import org.uma.jmetal.algorithm.multiobjective.nsgaii.NSGAII;
 import org.uma.jmetal.algorithm.multiobjective.nsgaii.NSGAIIBuilder;
 import org.uma.jmetal.example.AlgorithmRunner;
 import org.uma.jmetal.operator.crossover.CrossoverOperator;
-import org.uma.jmetal.operator.mutation.impl.IntegerPolynomialMutation;
 import org.uma.jmetal.operator.selection.impl.BinaryTournamentSelection;
 import org.uma.jmetal.problem.Problem;
-import org.uma.jmetal.solution.integersolution.IntegerSolution;
-import org.uma.jmetal.util.ConstraintHandling;
+import org.uma.jmetal.solution.doublesolution.DoubleSolution;
 import org.uma.jmetal.util.JMetalLogger;
 import org.uma.jmetal.util.comparator.RankingAndCrowdingDistanceComparator;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class NStudentsRunner {
@@ -31,22 +29,25 @@ public class NStudentsRunner {
         int maxEvaluations = 1000000;
         int populationSize = 100;
 
-        Problem<IntegerSolution> problem = new NStudentsVisionRangeProblem("Vision Range Problem", ROW, COL, students);
-        BinaryTournamentSelection<IntegerSolution> selection = new BinaryTournamentSelection<>(new RankingAndCrowdingDistanceComparator<>());
-        CrossoverOperator<IntegerSolution> crossover = new IntegerNPointCrossover(crossoverProbability, 1);
-        IntegerPolynomialMutation mutation = new IntegerPolynomialMutation(mutationProbability, 0);
+        Problem<DoubleSolution> problem = new NStudentsVisionRangeProblem("Vision Range Problem", ROW, COL, students);
+        BinaryTournamentSelection<DoubleSolution> selection = new BinaryTournamentSelection<>(new RankingAndCrowdingDistanceComparator<>());
+        CrossoverOperator<DoubleSolution> crossover = new DoubleNPointCrossover(crossoverProbability, 1);
+        DoublePolynomialMutation mutation = new DoublePolynomialMutation(mutationProbability, 0);
 
-        NSGAII<IntegerSolution> nsgaii = new NSGAIIBuilder<>(problem, crossover, mutation, populationSize)
+        NSGAII<DoubleSolution> nsgaii = new NSGAIIBuilder<>(problem, crossover, mutation, populationSize)
                 .setSelectionOperator(selection)
                 .setMaxEvaluations(maxEvaluations)
                 .build();
 
         AlgorithmRunner nsgaiiRunner = new AlgorithmRunner.Executor(nsgaii).execute();
-        List<IntegerSolution> bestIndividuals = new ArrayList<>();
+        List<DoubleSolution> bestIndividuals = nsgaii.getResult();
 
-        for (IntegerSolution solution: nsgaii.getResult()) {
-            if (ConstraintHandling.isFeasible(solution))
-                bestIndividuals.add(solution);
+        for (DoubleSolution solution: nsgaii.getResult()) {
+            int i = 0;
+            for (double value: solution.getVariables()) {
+                solution.setVariable(i, Math.floor(value));
+                i++;
+            }
         }
 
         JMetalLogger.logger.info(String.format("Problem: %s", problem.getName()));

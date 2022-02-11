@@ -5,7 +5,8 @@
 <html lang="it">
 <head>
     <jsp:include page="/WEB-INF/Interface/Partials/Head.jsp">
-        <jsp:param name="docenteStyles" value="docente,grid-layoutCSS"/>
+        <jsp:param name="docenteStyles" value="docente,grid-layoutCSS,sessione"/>
+        <jsp:param name="moduloAIStyles" value="seatchart"/>
         <jsp:param name="docenteScripts" value="docente,elencoEsiti"/>
         <jsp:param name="title" value="Easy Pass | Docente"/>
     </jsp:include>
@@ -18,7 +19,13 @@
     </div>
     <%  SessioneDiValidazione sessioneDiValidazione = (SessioneDiValidazione) session.getAttribute("sessioneDiValidazione");
         String path = sessioneDiValidazione.getQRCode();%>
-    <img src='http://localhost:8080/Progetto_EasyPass/QRCodes/<%=path%>' alt="QRcode" id="qrcode" class="qrCode">
+    <!--<img src='http://localhost:8080/Progetto_EasyPass/QRCodes/<%=path%>' alt="QRcode" id="qrcode" class="qrCode">-->
+    <div class="room_QR">
+        <img src='${pageContext.request.contextPath}/icons/67708.jpg' alt="QRcode" id="qrcode" class="qrCode">
+        <div class="content">
+            <div id="map-container"></div>
+        </div>
+    </div>
     <span id="linkQRcode"></span>
     <canvas id="canvas" hidden></canvas>
     <hr class="rounded">
@@ -32,14 +39,14 @@
         </c:forEach>
     </div>
     <div style="display: flex; justify-content: space-between">
-        <span class="esitoCounter" id="esitoCounter">
-            0/${param.nStudents}
-        </span>
+        <span class="esitoCounter" id="esitoCounter">0/${param.nStudents}</span>
         <button onclick="startAnteprimaReport()" class="termina-sessione-button">Termina</button>
     </div>
 </div>
 <%@include file="/WEB-INF/Interface/Partials/Logout.jsp"%>
 </body>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/ModuloAI/seatchart.js"></script>
 <script>
     window.addEventListener('load', function () {
         var canvasElement = document.getElementById("canvas");
@@ -48,7 +55,7 @@
         var img = document.getElementById('qrcode');
         var imageData;
 
-        if (img.getAttribute('src') == "") {
+        if (img.getAttribute('src') === "") {
             alert("Nessun Immagine Trovata");
             return;
         }
@@ -76,9 +83,30 @@
     const url = new URL(url_string);
     const paramValue = url.searchParams.get("nStudents");
     var setInterval = setInterval(function (){
-        ajaxUpdate(paramValue,setInterval)},
-        1000);
+        ajaxUpdate(paramValue,setInterval)}, 1000);
 
 
+    /** Mappa Studenti */
+    const options = {
+        map: {
+            id: 'map-container',
+            rows: 10,
+            columns: 14,
+            // e.g. Reserved Seat [Row: 1, Col: 2] = 7 * 1 + 2 = 9
+            reserved: {
+                //seats: [1, 2, 3, 5, 6, 7, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21],
+                seats:[],
+            },
+            disabled: {
+                seats: [7],
+                //rows: [3],
+                columns: [7]
+            }
+        },
+        types: [
+            { type: "reduced", backgroundColor: "#287233", price: 7.5, selected: [] }
+        ],
+    };
+    const sc = new Seatchart(options);
 </script>
 </html>

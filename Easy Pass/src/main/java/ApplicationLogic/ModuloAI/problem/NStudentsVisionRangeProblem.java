@@ -1,6 +1,6 @@
 package ApplicationLogic.ModuloAI.problem;
 
-import org.uma.jmetal.solution.integersolution.IntegerSolution;
+import org.uma.jmetal.solution.doublesolution.DoubleSolution;
 
 import java.util.*;
 
@@ -21,20 +21,20 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
 
     //Funzione di massimizzazione
     @Override
-    public void evaluate(IntegerSolution integerSolution) {
-        super.evaluate(integerSolution);
+    public void evaluate(DoubleSolution solution) {
+        super.evaluate(solution);
         calculateSeatingScore();
 
-        int visionRange = calculateVisionRange(integerSolution.getVariables());
-        integerSolution.getObjectives()[1] = -1.0 * visionRange;
+        int visionRange = calculateVisionRange(solution.getVariables());
+        solution.getObjectives()[1] = -1.0 * visionRange;
     }
 
-    private int calculateVisionRange(List<Integer> encoding){
+    private int calculateVisionRange(List<Double> encoding){
         int seatingScore = 0;
 
         for (int i = 0; i < encoding.size(); i += 2){
-            int x = encoding.get(i);
-            int y = encoding.get(i + 1);
+            int x = (int) Math.floor(encoding.get(i));
+            int y = (int) Math.floor(encoding.get(i + 1));
 
             seatingScore += this.seatingScore[x][y];
         }

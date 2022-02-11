@@ -3,7 +3,7 @@
 <html lang="it">
 <head>
     <jsp:include page="/WEB-INF/Interface/Partials/Head.jsp">
-        <jsp:param name="docenteStyles" value="docente"/>
+        <jsp:param name="docenteStyles" value="docente,sessione"/>
         <jsp:param name="docenteScripts" value="docente,avvioSessione"/>
         <jsp:param name="title" value="Easy Pass | Docente"/>
     </jsp:include>
@@ -19,6 +19,11 @@
               action="${pageContext.request.contextPath}/sessioneServlet/CreaNuovaSessione" method="get">
             <input class="student-form-input" type="text" id="nStudents" name="nStudents"
                    placeholder="Numero di Studenti" required autocomplete="off">
+            <select id="roomSize" name="roomSize" class="login-form-input form-select form-select-lg"
+                    aria-label=".form-select-lg" required>
+                <option id="room" disabled selected value="">Aula</option>
+                <option value="7">Aula</option>
+            </select>
             <input class="student-form-button" type="submit">
         </form>
     </div>
@@ -30,6 +35,18 @@
     function showForm(){
        document.getElementsByClassName("student-form-content").item(0).toggleAttribute("hidden");
        document.getElementsByClassName("avvia-sessione-button").item(0).toggleAttribute("hidden");
+
+        $.getJSON('js/Docente/aule.json',
+            function(room){
+                var html = ' ';
+                console.log(room.length)
+                for (let i = 0; i < room.length; i++) {
+                    console.log("sss")
+                    html += '<option value="' + room[i].name + '">' + room[i].name + '</option>';
+                    console.log(html)
+                }console.log(html + "  jj")
+                $('#room').insertAfter(html);
+            });
     }
 </script>
 <%@include file="/WEB-INF/Interface/Partials/Logout.jsp"%>

@@ -10,11 +10,17 @@ $(document).ready(function (){
                 required: true,
                 positiveNumber: true,
             },
+            roomSize: {
+                required: true,
+            }
         },
         messages: {
             nStudents: {
                 required: "Inserire il numero di studenti.",
             },
+            roomSize: {
+                required: "Inserire l'aula.",
+            }
         },
         submitHandler: function(form) {
             form.submit();

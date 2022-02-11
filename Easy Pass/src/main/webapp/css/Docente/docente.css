@@ -166,9 +166,12 @@ body {
 
 /* QRcode style*/
 .qrCode {
-    width: 22%;
-    margin: 0 auto 0 auto;
+    /*width: 22%;
+    margin: 0 auto 0 auto;*/
     object-fit: contain;
+
+    width: 30%;
+    margin: 0 10em 0 10em;
 }
 
 .esitoCounter{
