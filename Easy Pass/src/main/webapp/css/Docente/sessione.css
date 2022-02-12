@@ -1,3 +1,11 @@
 .form-select-lg {
     font-size: 0.9em;
 }
+
+/*************************
+* Area QR e Seating room *
+*********************+****/
+.room_QR{
+    display: flex;
+    font-size: 15px;
+}

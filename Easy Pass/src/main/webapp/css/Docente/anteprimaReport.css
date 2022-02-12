@@ -76,14 +76,6 @@ a{
     }
 }
 
-/*************************
-* Area QR e Seating room *
-*********************+****/
-.room_QR{
-    display: flex;
-    font-size: 15px;
-}
-
 
 /********************
 * Popup di Conferma *

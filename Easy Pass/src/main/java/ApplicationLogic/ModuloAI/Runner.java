@@ -15,14 +15,9 @@ import org.uma.jmetal.util.comparator.RankingAndCrowdingDistanceComparator;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Algoritmo genetico NSGAII: dispone gli studenti rispettando
- * le norme di sicurezza anti-Covid ma li organizza anche in
- * modo tale che ognuno di essi ha una buona visuale per la lavagna.
- */
-public class NStudentsRunner {
+public class Runner {
 
-    public static List<Integer> Algorithm(String[] args) {
+    public static void main(String[] args) {
         if (args.length != 3)
             throw new IllegalArgumentException("No valid argument passed.");
 
@@ -46,10 +41,19 @@ public class NStudentsRunner {
                 .build();
 
         AlgorithmRunner nsgaiiRunner = new AlgorithmRunner.Executor(nsgaii).execute();
+        List<DoubleSolution> prova = nsgaii.getResult();
+
+        for (DoubleSolution solution: prova) {
+            int i = 0;
+            for (double value: solution.getVariables()) {
+                solution.setVariable(i, Math.floor(value));
+                i++;
+            }
+        }
 
         List<DoubleSolution> bestIndividuals = nsgaii.getResult();
         List<Integer> bestSolution = new ArrayList<>();
-        DoubleSolution doubleBestSolution = NStudentsRunner.getBestSolution(bestIndividuals);
+        DoubleSolution doubleBestSolution = Runner.getBestSolution(bestIndividuals);
 
         for (double value: doubleBestSolution.getVariables()) {
             bestSolution.add((int) Math.floor(value));
@@ -58,10 +62,9 @@ public class NStudentsRunner {
         JMetalLogger.logger.info(String.format("Problem: %s", problem.getName()));
         JMetalLogger.logger.info(String.format("Solutions: \n%s\n", bestIndividuals));
         JMetalLogger.logger.info(String.format("Total execution time: %s ms", nsgaiiRunner.getComputingTime()));
-        return bestSolution;
+        System.out.println(bestSolution);
     }
 
-    /*Ritorna la migliore soluzione tra quelle analizzate*/
     private static DoubleSolution getBestSolution(List<DoubleSolution> bestIndividuals){
         DoubleSolution doubleBestSolution = bestIndividuals.get(0);
 

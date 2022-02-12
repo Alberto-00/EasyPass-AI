@@ -2,7 +2,6 @@ package ApplicationLogic.ModuloAI.problem;
 
 import org.uma.jmetal.problem.doubleproblem.impl.AbstractDoubleProblem;
 import org.uma.jmetal.solution.doublesolution.DoubleSolution;
-import org.uma.jmetal.solution.integersolution.IntegerSolution;
 import org.uma.jmetal.util.solutionattribute.impl.NumberOfViolatedConstraints;
 import org.uma.jmetal.util.solutionattribute.impl.OverallConstraintViolation;
 
@@ -37,7 +36,7 @@ public class NStudentsDistanceProblem extends AbstractDoubleProblem implements C
         setBounds(students);
     }
 
-    //Funzione di minimizzazzione e vincoli
+    //Primo obiettivo
     @Override
     public void evaluate(DoubleSolution solution) {
         int conflicts = calculateConflicts(solution.getVariables());
@@ -46,41 +45,7 @@ public class NStudentsDistanceProblem extends AbstractDoubleProblem implements C
         evaluateConstraints(solution);
     }
 
-    private int calculateConflicts(List<Double> encoding) {
-        int conflicts = 0;
-        this.roomSize = new int[ROW][COL];
-
-        for (int i = 0; i < encoding.size(); i += 2){
-            int x = (int) Math.floor(encoding.get(i));
-            int y = (int) Math.floor(encoding.get(i + 1));
-
-            //Questo if si può togliere
-            if (roomSize[x][y] == 1)
-                conflicts += 1000;
-            else roomSize[x][y] = 1;
-        }
-        for (int row = 0; row < this.ROW; row++){
-            for (int col = 0; col < this.COL; col++){
-                if (roomSize[row][col] == 1){
-                    if ((row - 1) >= 0) {
-                        if (roomSize[row - 1][col] == 1)
-                            conflicts++;
-                    } if ((row + 1) < this.ROW){
-                        if (roomSize[row + 1][col] == 1)
-                            conflicts++;
-                    } if ((col + 1) < this.COL){
-                        if (roomSize[row][col + 1] == 1)
-                            conflicts++;
-                    } if ((col - 1) >= 0){
-                        if (roomSize[row][col - 1] == 1)
-                            conflicts++;
-                    }
-                }
-            }
-        }
-        return conflicts;
-    }
-
+    //Calcolo dei vincoli
     @Override
     public void evaluateConstraints(DoubleSolution solution)  {
         double[] constraint = new double[this.getNumberOfConstraints()];
@@ -116,6 +81,43 @@ public class NStudentsDistanceProblem extends AbstractDoubleProblem implements C
         numberOfViolatedConstraints.setAttribute(solution, violatedConstraints);
     }
 
+    //Calcolo dei conflitti da minimizzare
+    private int calculateConflicts(List<Double> encoding) {
+        int conflicts = 0;
+        this.roomSize = new int[ROW][COL];
+
+        for (int i = 0; i < encoding.size(); i += 2){
+            int x = (int) Math.floor(encoding.get(i));
+            int y = (int) Math.floor(encoding.get(i + 1));
+
+            //Questo if si può togliere
+            if (roomSize[x][y] == 1)
+                conflicts += 1000;
+            else roomSize[x][y] = 1;
+        }
+        for (int row = 0; row < this.ROW; row++){
+            for (int col = 0; col < this.COL; col++){
+                if (roomSize[row][col] == 1){
+                    if ((row - 1) >= 0) {
+                        if (roomSize[row - 1][col] == 1)
+                            conflicts++;
+                    } if ((row + 1) < this.ROW){
+                        if (roomSize[row + 1][col] == 1)
+                            conflicts++;
+                    } if ((col + 1) < this.COL){
+                        if (roomSize[row][col + 1] == 1)
+                            conflicts++;
+                    } if ((col - 1) >= 0){
+                        if (roomSize[row][col - 1] == 1)
+                            conflicts++;
+                    }
+                }
+            }
+        }
+        return conflicts;
+    }
+
+    /*Imposta i lower e gli upper bounds per ogni studente.*/
     private void setBounds(int students){
         List<Integer> integerLowerBounds = new ArrayList<>();
         List<Integer> integerUpperBounds = new ArrayList<>();

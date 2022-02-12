@@ -9,20 +9,19 @@
     </jsp:include>
 </head>
 <body>
+<%@include file="/WEB-INF/Interface/Partials/LoadingPage.jsp"%>
 <div class="coll-2">
     <div class="center">
         <a class="btnn" id="logout" href="javascript:void(0)">LOGOUT</a>
     </div>
     <div class="student-form-content" hidden>
-        <h1 class="titleStudent">Inserisci il numero di Studenti</h1>
+        <h1 class="titleStudent">Inserisci il numero di Studenti e l'Aula</h1>
         <form class="student-form" id="NumberOfStudentsForm" name="NumberOfStudentsForm"
               action="${pageContext.request.contextPath}/sessioneServlet/CreaNuovaSessione" method="get">
             <input class="student-form-input" type="text" id="nStudents" name="nStudents"
                    placeholder="Numero di Studenti" required autocomplete="off">
             <select id="roomSize" name="roomSize" class="login-form-input form-select form-select-lg"
                     aria-label=".form-select-lg" required>
-                <option id="room" disabled selected value="">Aula</option>
-                <option value="7">Aula</option>
             </select>
             <input class="student-form-button" type="submit">
         </form>
@@ -31,24 +30,31 @@
         <button class="avvia-sessione-button" onclick="showForm()">Avvia Sessione</button>
     </div>
 </div>
+
 <script>
     function showForm(){
        document.getElementsByClassName("student-form-content").item(0).toggleAttribute("hidden");
        document.getElementsByClassName("avvia-sessione-button").item(0).toggleAttribute("hidden");
 
-        $.getJSON('js/Docente/aule.json',
-            function(room){
-                var html = ' ';
-                console.log(room.length)
+        $.getJSON('../js/Docente/aule.json',
+            function(obj){
+                var html = '<option disabled selected value="">Aula</option>';
+                var room = obj.room
+
                 for (let i = 0; i < room.length; i++) {
-                    console.log("sss")
-                    html += '<option value="' + room[i].name + '">' + room[i].name + '</option>';
-                    console.log(html)
-                }console.log(html + "  jj")
-                $('#room').insertAfter(html);
+                    html += '<option value=' + room[i].row + '-' +
+                        room[i].col + "-" + "?" + '>' + room[i].name + '</option>';
+                }
+                $('#roomSize').append(html);
             });
     }
+
+    $('#NumberOfStudentsForm').submit(function (){
+        $('.coll-2').css('opacity', 0.1);
+        $('#loading').css('display', 'flex')
+    })
 </script>
+
 <%@include file="/WEB-INF/Interface/Partials/Logout.jsp"%>
 </body>
 </html>

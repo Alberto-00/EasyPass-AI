@@ -1,4 +1,5 @@
 <%@ page import="Storage.SessioneDiValidazione.SessioneDiValidazione" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -18,10 +19,12 @@
         <a class="btnn" id="logout" href="javascript:void(0)">LOGOUT</a>
     </div>
     <%  SessioneDiValidazione sessioneDiValidazione = (SessioneDiValidazione) session.getAttribute("sessioneDiValidazione");
-        String path = sessioneDiValidazione.getQRCode();%>
-    <!--<img src='http://localhost:8080/Progetto_EasyPass/QRCodes/<%=path%>' alt="QRcode" id="qrcode" class="qrCode">-->
+        List<Integer> solutionGA = (List<Integer>) session.getAttribute("seatingMap");
+        String[] roomSize = (String[]) session.getAttribute("roomSize");
+        String path = sessioneDiValidazione.getQRCode();
+    %>
     <div class="room_QR">
-        <img src='${pageContext.request.contextPath}/icons/67708.jpg' alt="QRcode" id="qrcode" class="qrCode">
+        <img src='http://localhost:8080/Progetto_EasyPass/QRCodes/<%=path%>' alt="QRcode" id="qrcode" class="qrCode">
         <div class="content">
             <div id="map-container"></div>
         </div>
@@ -44,7 +47,6 @@
     </div>
 </div>
 <%@include file="/WEB-INF/Interface/Partials/Logout.jsp"%>
-</body>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ModuloAI/seatchart.js"></script>
 <script>
@@ -90,23 +92,23 @@
     const options = {
         map: {
             id: 'map-container',
-            rows: 10,
-            columns: 14,
+            rows: <%=Integer.parseInt(roomSize[0])%>,
+            columns: <%=Integer.parseInt(roomSize[1])%>,
             // e.g. Reserved Seat [Row: 1, Col: 2] = 7 * 1 + 2 = 9
             reserved: {
-                //seats: [1, 2, 3, 5, 6, 7, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21],
                 seats:[],
             },
             disabled: {
-                seats: [7],
+                //seats: [7],
                 //rows: [3],
-                columns: [7]
+                //columns: [7]
             }
         },
         types: [
-            { type: "reduced", backgroundColor: "#287233", price: 7.5, selected: [] }
+            { type: "reduced", backgroundColor: "#287233", price: 7.5, selected: <%=solutionGA%> }
         ],
     };
     const sc = new Seatchart(options);
 </script>
+</body>
 </html>

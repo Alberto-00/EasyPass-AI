@@ -1,5 +1,6 @@
 package ApplicationLogic.Servlet;
 
+import ApplicationLogic.ModuloAI.NStudentsRunner;
 import ApplicationLogic.Utils.InvalidRequestException;
 import ApplicationLogic.Utils.ServletLogic;
 import ApplicationLogic.Utils.Validator.DocenteValidator;
@@ -13,15 +14,21 @@ import Storage.Report.ReportDAO;
 import Storage.SessioneDiValidazione.SessioneDiValidazione;
 import Storage.SessioneDiValidazione.SessioneDiValidazioneDAO;
 import com.itextpdf.text.DocumentException;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * La classe si occupa della gestione della Sessione di validazione e delle funzionalità
@@ -84,7 +91,21 @@ public class SessionController extends ServletLogic {
                         validate(DocenteValidator.validateNumberOfStudents(request));
                         SessioneDiValidazione sessioneDiValidazione = docente.avviaSessione();
                         sessioneDAO.doCreate(sessioneDiValidazione);
+
+                        String[] roomInfo = request.getParameter("roomSize").split("-");
+                        roomInfo[2] = request.getParameter("nStudents");
+
+                        List<Integer> solutionGA = NStudentsRunner.Algorithm(roomInfo);
+                        List<Integer> students = new ArrayList<>();
+
+                        for (int i = 0; i < solutionGA.size(); i += 2){
+                            int value = Integer.parseInt(roomInfo[1]) * solutionGA.get(i) + solutionGA.get(i + 1);
+                            students.add(value);
+                        }
+
                         session.setAttribute("sessioneDiValidazione", sessioneDiValidazione);
+                        session.setAttribute("seatingMap", students);
+                        session.setAttribute("roomSize", roomInfo);
                         response.sendRedirect("ElencoEsiti?nStudents=" + request.getParameter("nStudents"));
                     } else
                         throw new InvalidRequestException("Non sei Autorizzato", List.of("Non sei Autorizzato"), HttpServletResponse.SC_FORBIDDEN);

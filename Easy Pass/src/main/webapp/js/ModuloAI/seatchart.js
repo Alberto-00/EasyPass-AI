@@ -13,7 +13,7 @@
      * Creates a seatchart.
      * @constructor
      *
-     * @param {{types: [{backgroundColor: string, price: number, type: string, selected: number[]}], map: {reserved: {seats: *[]}, columns: number, disabled: {columns: number[], seats: number[]}, id: string, rows: number}}} options - Seatmap options.
+     * @param {{types: [{backgroundColor: string, price: number, type: string, selected}], map: {reserved: {seats: *[]}, columns, disabled: {}, id: string, rows}}} options - Seatmap options.
      *
      *
      * @param {Object} options.map - Map options.

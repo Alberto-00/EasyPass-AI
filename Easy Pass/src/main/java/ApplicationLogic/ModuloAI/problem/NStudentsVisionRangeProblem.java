@@ -19,7 +19,7 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
         setNumberOfObjectives(2);
     }
 
-    //Funzione di massimizzazione
+    //Secondo obiettivo
     @Override
     public void evaluate(DoubleSolution solution) {
         super.evaluate(solution);
@@ -29,6 +29,7 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
         solution.getObjectives()[1] = -1.0 * visionRange;
     }
 
+    //Calcolo della funzione di fitness
     private int calculateVisionRange(List<Double> encoding){
         int seatingScore = 0;
 
@@ -41,6 +42,9 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
         return seatingScore;
     }
 
+    //Divisione dell'aula in 9 settori: ogni settore avrà due coppie di coordinate (che indicano rispettivamente
+    // lo spigolo in alto a sinistra, in cui inizia il settore, e lo spigolo in basso a destra, in cui termina il settore) e
+    // il punteggio del settore.
     private void calculateSectors(){
         int countSectors = 0;
         int rowDivision;
@@ -79,6 +83,7 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
         }
     }
 
+    //Sostituisce la posizione dello studente con il punteggio del corrispondente settore
     private void calculateSeatingScore(){
         int[][] roomSize = super.getRoomSize();
 
