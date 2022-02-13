@@ -48,11 +48,6 @@
                 $('#roomSize').append(html);
             });
     }
-
-    $('#NumberOfStudentsForm').submit(function (){
-        $('.coll-2').css('opacity', 0.1);
-        $('#loading').css('display', 'flex')
-    })
 </script>
 
 <%@include file="/WEB-INF/Interface/Partials/Logout.jsp"%>
