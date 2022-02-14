@@ -11,7 +11,6 @@ import java.util.List;
 public class NStudentsDistanceProblem extends AbstractDoubleProblem implements ConstrainedProblem<DoubleSolution>{
 
     private final int COL, ROW;
-    private int[][] roomSize;
     private final OverallConstraintViolation<DoubleSolution> overallConstraintViolationDegree ;
     private final NumberOfViolatedConstraints<DoubleSolution> numberOfViolatedConstraints ;
 
@@ -24,7 +23,6 @@ public class NStudentsDistanceProblem extends AbstractDoubleProblem implements C
 
         this.ROW = row;
         this.COL = col;
-        this.roomSize = new int[ROW][COL];
 
         overallConstraintViolationDegree = new OverallConstraintViolation<>() ;
         numberOfViolatedConstraints = new NumberOfViolatedConstraints<>() ;
@@ -51,20 +49,15 @@ public class NStudentsDistanceProblem extends AbstractDoubleProblem implements C
         double[] constraint = new double[this.getNumberOfConstraints()];
         constraint[0] = 0;
         List<Double> encoding = solution.getVariables();
-        boolean flag = false;
 
         for (int i = 0; i < encoding.size() - 3; i += 2){
             double x = Math.floor(encoding.get(i));
             double y = Math.floor(encoding.get(i + 1));
 
             for (int j = i+2; j < encoding.size(); j += 2) {
-                if (x == Math.floor(encoding.get(j)) && y == Math.floor(encoding.get(j+1))){
-                    constraint[0] = -1.0;
-                    flag = true;
-                    break;
-                }
+                if (x == Math.floor(encoding.get(j)) && y == Math.floor(encoding.get(j+1)))
+                    constraint[0] -= 1.0;
             }
-            if (flag) break;
         }
         solution.setConstraint(0, constraint[0]);
 
@@ -84,33 +77,27 @@ public class NStudentsDistanceProblem extends AbstractDoubleProblem implements C
     //Calcolo dei conflitti da minimizzare
     private int calculateConflicts(List<Double> encoding) {
         int conflicts = 0;
-        this.roomSize = new int[ROW][COL];
 
         for (int i = 0; i < encoding.size(); i += 2){
             int x = (int) Math.floor(encoding.get(i));
             int y = (int) Math.floor(encoding.get(i + 1));
 
-            //Questo if si può togliere
-            if (roomSize[x][y] == 1)
-                conflicts += 1000;
-            else roomSize[x][y] = 1;
-        }
-        for (int row = 0; row < this.ROW; row++){
-            for (int col = 0; col < this.COL; col++){
-                if (roomSize[row][col] == 1){
-                    if ((row - 1) >= 0) {
-                        if (roomSize[row - 1][col] == 1)
-                            conflicts++;
-                    } if ((row + 1) < this.ROW){
-                        if (roomSize[row + 1][col] == 1)
-                            conflicts++;
-                    } if ((col + 1) < this.COL){
-                        if (roomSize[row][col + 1] == 1)
-                            conflicts++;
-                    } if ((col - 1) >= 0){
-                        if (roomSize[row][col - 1] == 1)
-                            conflicts++;
-                    }
+            for (int j = i + 2; j < encoding.size(); j += 2){
+                int actual_x = (int) Math.floor(encoding.get(j));
+                int actual_y = (int) Math.floor(encoding.get(j + 1));
+
+                if ((actual_x - 1) >= 0) {
+                    if (actual_x - 1 == x && y == actual_y)
+                        conflicts++;
+                } if ((actual_x + 1) < this.ROW){
+                    if (actual_x + 1 == x && y == actual_y)
+                        conflicts++;
+                } if ((actual_y + 1) < this.COL) {
+                    if (actual_x == x && actual_y + 1 == y)
+                        conflicts++;
+                } if ((actual_y - 1) >= 0){
+                    if (actual_x == x && actual_y - 1 == y)
+                        conflicts++;
                 }
             }
         }
@@ -148,9 +135,5 @@ public class NStudentsDistanceProblem extends AbstractDoubleProblem implements C
 
     public int getROW(){
         return ROW;
-    }
-
-    public int[][] getRoomSize() {
-        return roomSize;
     }
 }

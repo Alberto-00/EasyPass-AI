@@ -7,14 +7,11 @@ import java.util.*;
 public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
 
     private final TreeMap<Integer, ArrayList<Integer>> matrixSectors;
-    private final int[][] seatingScore;
 
     public NStudentsVisionRangeProblem(String name, int row, int col, int students){
         super(name, row, col, students);
 
         matrixSectors = new TreeMap<>();
-        seatingScore = new int[row][col];
-
         calculateSectors();
         setNumberOfObjectives(2);
     }
@@ -23,7 +20,6 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
     @Override
     public void evaluate(DoubleSolution solution) {
         super.evaluate(solution);
-        calculateSeatingScore();
 
         int visionRange = calculateVisionRange(solution.getVariables());
         solution.getObjectives()[1] = -1.0 * visionRange;
@@ -37,7 +33,7 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
             int x = (int) Math.floor(encoding.get(i));
             int y = (int) Math.floor(encoding.get(i + 1));
 
-            seatingScore += this.seatingScore[x][y];
+            seatingScore += calculateSeatingScore(x, y);
         }
         return seatingScore;
     }
@@ -83,23 +79,11 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
         }
     }
 
-    //Sostituisce la posizione dello studente con il punteggio del corrispondente settore
-    private void calculateSeatingScore(){
-        int[][] roomSize = super.getRoomSize();
 
-        for (int row = 0; row < super.getROW(); row++) {
-            for (int col = 0; col < super.getCOL(); col++) {
-                if (roomSize[row][col] == 1) {
-                    setScore(row, col);
-                }
-            }
-        }
-    }
-
-    private void setScore(int row, int col){
+    private int calculateSeatingScore(int row, int col){
         int firstX, firstY;
         int secondX, secondY;
-        int score;
+        int score = 0;
 
         for (int i = 0; i < matrixSectors.size(); i++){
             firstX = matrixSectors.get(i).get(0);
@@ -112,7 +96,8 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
 
             if ((row >= firstX && row <= secondX) &&
                     (col >= firstY && col <= secondY))
-                seatingScore[row][col] = score;
+                return score;
         }
+        return score;
     }
 }
