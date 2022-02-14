@@ -1,7 +1,9 @@
 package it.unisa.problem;
 
+import it.unisa.fix.DefaultDoubleToIntSolution;
 import org.uma.jmetal.problem.doubleproblem.impl.AbstractDoubleProblem;
 import org.uma.jmetal.solution.doublesolution.DoubleSolution;
+import org.uma.jmetal.solution.doublesolution.impl.DefaultDoubleSolution;
 import org.uma.jmetal.util.solutionattribute.impl.NumberOfViolatedConstraints;
 import org.uma.jmetal.util.solutionattribute.impl.OverallConstraintViolation;
 
@@ -41,6 +43,11 @@ public class NStudentsDistanceProblem extends AbstractDoubleProblem implements C
         solution.getObjectives()[0] = conflicts;
 
         evaluateConstraints(solution);
+    }
+
+    @Override
+    public DoubleSolution createSolution() {
+        return new DefaultDoubleToIntSolution(bounds, getNumberOfObjectives(), getNumberOfConstraints());
     }
 
     //Calcolo dei vincoli
