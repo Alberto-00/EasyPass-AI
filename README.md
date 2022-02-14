@@ -30,6 +30,7 @@
   <li>Each student needs to be at least one seat away from the other.</li>
   <li>Each student needs to be seated in the way they can best see the blackboard.</li>
 </ol>
+To meet these goals we used a multi-objectives genetic algorithm; in particular, we developed a NSGAII with jMetal framework.
     The AI module integration is produced for the <i>Fundamentals of Artificial Intelligence</i> course of Computer Science at the University of Salerno.
 </p>
 <h2 dir="auto">
