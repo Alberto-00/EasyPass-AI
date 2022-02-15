@@ -79,7 +79,6 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
         }
     }
 
-
     private int calculateSeatingScore(int row, int col){
         int firstX, firstY;
         int secondX, secondY;

@@ -123,7 +123,6 @@ public class NStudentsDistanceProblem extends AbstractDoubleProblem implements C
             doubleLowerBounds.add(0.0);
             doubleUpperBounds.add(COL - 0.1);
         }
-
         setVariableBounds(doubleLowerBounds, doubleUpperBounds);
     }
 

@@ -12,7 +12,6 @@ import org.uma.jmetal.solution.doublesolution.DoubleSolution;
 import org.uma.jmetal.util.JMetalLogger;
 import org.uma.jmetal.util.comparator.RankingAndCrowdingDistanceComparator;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,7 +31,7 @@ public class NStudentsRunner {
 
         double crossoverProbability = 0.8;
         double mutationProbability = 0.01;
-        int maxEvaluations = 1000000;
+        int maxEvaluations = 100000;
         int populationSize = 100;
 
         Problem<DoubleSolution> problem = new NStudentsVisionRangeProblem("Vision Range Problem", ROW, COL, students);
@@ -48,17 +47,12 @@ public class NStudentsRunner {
         AlgorithmRunner nsgaiiRunner = new AlgorithmRunner.Executor(nsgaii).execute();
 
         List<DoubleSolution> bestIndividuals = nsgaii.getResult();
-        List<Integer> bestSolution = new ArrayList<>();
         DoubleSolution doubleBestSolution = NStudentsRunner.getBestSolution(bestIndividuals);
-
-        for (double value: doubleBestSolution.getVariables()) {
-            bestSolution.add((int) value);
-        }
 
         JMetalLogger.logger.info(String.format("Problem: %s", problem.getName()));
         JMetalLogger.logger.info(String.format("Solutions: \n%s\n", bestIndividuals));
-        JMetalLogger.logger.info(String.format("Total execution time: %s ms", nsgaiiRunner.getComputingTime()));
-        JMetalLogger.logger.info(String.format("Best Solution: \n%s\n", bestSolution));
+        JMetalLogger.logger.info(String.format("Total execution time: %s ms\n", nsgaiiRunner.getComputingTime()));
+        JMetalLogger.logger.info(String.format("\nBest Solution: \n%s\n", doubleBestSolution));
     }
 
     /*Ritorna la migliore soluzione tra quelle analizzate*/

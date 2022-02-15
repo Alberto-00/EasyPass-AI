@@ -6,6 +6,7 @@ import org.uma.jmetal.algorithm.multiobjective.nsgaii.NSGAII;
 import org.uma.jmetal.algorithm.multiobjective.nsgaii.NSGAIIBuilder;
 import org.uma.jmetal.example.AlgorithmRunner;
 import org.uma.jmetal.operator.crossover.CrossoverOperator;
+import org.uma.jmetal.operator.crossover.impl.SBXCrossover;
 import org.uma.jmetal.operator.selection.impl.BinaryTournamentSelection;
 import org.uma.jmetal.problem.Problem;
 import org.uma.jmetal.solution.doublesolution.DoubleSolution;
@@ -32,7 +33,7 @@ public class NStudentsRunner {
 
         double crossoverProbability = 0.8;
         double mutationProbability = 0.01;
-        int maxEvaluations = 1000000;
+        int maxEvaluations = 100000;
         int populationSize = 100;
 
         Problem<DoubleSolution> problem = new NStudentsVisionRangeProblem("Vision Range Problem", ROW, COL, students);
@@ -58,7 +59,6 @@ public class NStudentsRunner {
         JMetalLogger.logger.info(String.format("Problem: %s", problem.getName()));
         JMetalLogger.logger.info(String.format("Solutions: \n%s\n", bestIndividuals));
         JMetalLogger.logger.info(String.format("Total execution time: %s ms", nsgaiiRunner.getComputingTime()));
-        System.out.println("bestSolution: " + bestSolution);
         return bestSolution;
     }
 

@@ -35,9 +35,8 @@ $(document).ready(function (){
         },
         submitHandler: function(form) {
             form.submit();
-            $('.coll-2').css('opacity', 0.1);
+            $('.coll-2').css({'opacity' : 0.1, "z-index" : -1});
             $('#loading').css('display', 'flex');
-            $('#roomSize').css('z-index', -1);
         }
     });
 })
