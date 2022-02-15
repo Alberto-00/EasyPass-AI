@@ -1,4 +1,4 @@
-package it.unisa.fix;
+package ApplicationLogic.ModuloAI.fix;
 
 import org.apache.commons.lang3.tuple.Pair;
 import org.uma.jmetal.solution.doublesolution.impl.DefaultDoubleSolution;

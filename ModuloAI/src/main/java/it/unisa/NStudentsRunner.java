@@ -1,5 +1,4 @@
 package it.unisa;
-
 import it.unisa.fix.DoubleNPointCrossover;
 import it.unisa.fix.DoublePolynomialMutation;
 import it.unisa.problem.NStudentsVisionRangeProblem;
@@ -13,8 +12,14 @@ import org.uma.jmetal.solution.doublesolution.DoubleSolution;
 import org.uma.jmetal.util.JMetalLogger;
 import org.uma.jmetal.util.comparator.RankingAndCrowdingDistanceComparator;
 
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Algoritmo genetico NSGAII: dispone gli studenti rispettando
+ * le norme di sicurezza anti-Covid ma li organizza anche in
+ * modo tale che ognuno di essi ha una buona visuale per la lavagna.
+ */
 public class NStudentsRunner {
 
     public static void main(String[] args) {
@@ -42,29 +47,21 @@ public class NStudentsRunner {
 
         AlgorithmRunner nsgaiiRunner = new AlgorithmRunner.Executor(nsgaii).execute();
 
-        for (DoubleSolution solution: nsgaii.getResult()) {
-            int i = 0;
-            for (double value: solution.getVariables()) {
-                solution.setVariable(i, Math.floor(value));
-                i++;
-            }
-        }
-
         List<DoubleSolution> bestIndividuals = nsgaii.getResult();
-        DoubleSolution bestSolution = NStudentsRunner.getBestSolution(bestIndividuals);
-        int i = 0;
+        List<Integer> bestSolution = new ArrayList<>();
+        DoubleSolution doubleBestSolution = NStudentsRunner.getBestSolution(bestIndividuals);
 
-        for (double value: bestSolution.getVariables()) {
-            bestSolution.setVariable(i, Math.floor(value));
-            ++i;
+        for (double value: doubleBestSolution.getVariables()) {
+            bestSolution.add((int) value);
         }
 
         JMetalLogger.logger.info(String.format("Problem: %s", problem.getName()));
         JMetalLogger.logger.info(String.format("Solutions: \n%s\n", bestIndividuals));
-        JMetalLogger.logger.info(String.format("Total execution time: %s ms\n\n", nsgaiiRunner.getComputingTime()));
-        JMetalLogger.logger.info(String.format("Best Solution: %s\n", bestSolution));
+        JMetalLogger.logger.info(String.format("Total execution time: %s ms", nsgaiiRunner.getComputingTime()));
+        JMetalLogger.logger.info(String.format("Best Solution: \n%s\n", bestSolution));
     }
 
+    /*Ritorna la migliore soluzione tra quelle analizzate*/
     private static DoubleSolution getBestSolution(List<DoubleSolution> bestIndividuals){
         DoubleSolution doubleBestSolution = bestIndividuals.get(0);
 

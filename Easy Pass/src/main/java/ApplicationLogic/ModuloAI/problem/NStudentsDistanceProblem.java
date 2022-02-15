@@ -1,5 +1,6 @@
 package ApplicationLogic.ModuloAI.problem;
 
+import ApplicationLogic.ModuloAI.fix.DefaultDoubleToIntSolution;
 import org.uma.jmetal.problem.doubleproblem.impl.AbstractDoubleProblem;
 import org.uma.jmetal.solution.doublesolution.DoubleSolution;
 import org.uma.jmetal.util.solutionattribute.impl.NumberOfViolatedConstraints;
@@ -32,6 +33,12 @@ public class NStudentsDistanceProblem extends AbstractDoubleProblem implements C
         setNumberOfConstraints(1);
         setNumberOfVariables(students);
         setBounds(students);
+    }
+
+    //Creazione soluzioni con parte decimale .0
+    @Override
+    public DoubleSolution createSolution() {
+        return new DefaultDoubleToIntSolution(bounds, getNumberOfObjectives(), getNumberOfConstraints());
     }
 
     //Primo obiettivo

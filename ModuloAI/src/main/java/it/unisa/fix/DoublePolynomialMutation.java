@@ -1,6 +1,7 @@
 package it.unisa.fix;
 
 import org.uma.jmetal.operator.mutation.MutationOperator;
+import org.uma.jmetal.problem.integerproblem.IntegerProblem;
 import org.uma.jmetal.solution.doublesolution.DoubleSolution;
 import org.uma.jmetal.solution.util.repairsolution.RepairDoubleSolution;
 import org.uma.jmetal.solution.util.repairsolution.impl.RepairDoubleSolutionWithBoundValue;
@@ -13,28 +14,32 @@ public class DoublePolynomialMutation implements MutationOperator<DoubleSolution
     private static final double DEFAULT_DISTRIBUTION_INDEX = 20.0D;
     private double distributionIndex;
     private double mutationProbability;
-    private RepairDoubleSolution solutionRepair;
-    private RandomGenerator<Double> randomGenerator;
+    private final RepairDoubleSolution solutionRepair;
+    private final RandomGenerator<Double> randomGenerator;
 
+    /** Constructor */
     public DoublePolynomialMutation() {
-        this(0.01D, 20.0D);
+        this(DEFAULT_PROBABILITY, DEFAULT_DISTRIBUTION_INDEX) ;
     }
 
-    public DoublePolynomialMutation(DoubleSolution problem, double distributionIndex) {
-        this(1.0D / (double)problem.getNumberOfVariables(), distributionIndex);
+    /** Constructor */
+    public DoublePolynomialMutation(IntegerProblem problem, double distributionIndex) {
+        this(1.0/problem.getNumberOfVariables(), distributionIndex) ;
     }
 
+    /** Constructor */
     public DoublePolynomialMutation(double mutationProbability, double distributionIndex) {
-        this(mutationProbability, distributionIndex, new RepairDoubleSolutionWithBoundValue());
+        this(mutationProbability, distributionIndex, new RepairDoubleSolutionWithBoundValue()) ;
     }
 
-    public DoublePolynomialMutation(double mutationProbability, double distributionIndex, RepairDoubleSolution solutionRepair) {
-        this(mutationProbability, distributionIndex, solutionRepair, () -> {
-            return JMetalRandom.getInstance().nextDouble();
-        });
+    /** Constructor */
+    public DoublePolynomialMutation(double mutationProbability, double distributionIndex,
+                                     RepairDoubleSolution solutionRepair) {
+        this(mutationProbability, distributionIndex, solutionRepair, () -> JMetalRandom.getInstance().nextDouble());
     }
 
-    public DoublePolynomialMutation(double mutationProbability, double distributionIndex, RepairDoubleSolution solutionRepair, RandomGenerator<Double> randomGenerator) {
+    public DoublePolynomialMutation(double mutationProbability, double distributionIndex,
+                                    RepairDoubleSolution solutionRepair, RandomGenerator<Double> randomGenerator) {
         if (mutationProbability < 0.0D) {
             throw new JMetalException("Mutation probability is negative: " + mutationProbability);
         } else if (distributionIndex < 0.0D) {
@@ -73,36 +78,34 @@ public class DoublePolynomialMutation implements MutationOperator<DoubleSolution
     }
 
     private void doMutation(double probability, DoubleSolution solution) {
-        for(int i = 0; i < solution.getNumberOfVariables(); ++i) {
-            if (this.randomGenerator.getRandomValue() <= probability) {
-                double y = solution.getVariable(i);
-                double yl = solution.getLowerBound(i);
-                double yu = solution.getUpperBound(i);
+        double rnd, delta1, delta2, mutPow, deltaq;
+        double y, yl, yu, val, xy;
+
+        for (int i = 0; i < solution.getNumberOfVariables(); i++) {
+            if (randomGenerator.getRandomValue() <= probability) {
+                y = Math.floor(solution.getVariable(i));
+                yl = solution.getLowerBound(i);
+                yu = solution.getUpperBound(i);
                 if (yl == yu) {
-                    y = yl;
+                    y = yl ;
                 } else {
-                    double delta1 = (y - yl) / (yu - yl);
-                    double delta2 = (yu - y) / (yu - yl);
-                    Double rnd = this.randomGenerator.getRandomValue();
-                    double mutPow = 1.0D / (this.distributionIndex + 1.0D);
-                    double deltaq;
-                    double val;
-                    double xy;
-                    if (rnd <= 0.5D) {
-                        xy = 1.0D - delta1;
-                        val = 2.0D * rnd + (1.0D - 2.0D * rnd) * Math.pow(xy, this.distributionIndex + 1.0D);
-                        deltaq = Math.pow(val, mutPow) - 1.0D;
+                    delta1 = (y - yl) / (yu - yl);
+                    delta2 = (yu - y) / (yu - yl);
+                    rnd = randomGenerator.getRandomValue();
+                    mutPow = 1.0 / (distributionIndex + 1.0);
+                    if (rnd <= 0.5) {
+                        xy = 1.0 - delta1;
+                        val = 2.0 * rnd + (1.0 - 2.0 * rnd) * (Math.pow(xy, distributionIndex + 1.0));
+                        deltaq = Math.pow(val, mutPow) - 1.0;
                     } else {
-                        xy = 1.0D - delta2;
-                        val = 2.0D * (1.0D - rnd) + 2.0D * (rnd - 0.5D) * Math.pow(xy, this.distributionIndex + 1.0D);
-                        deltaq = 1.0D - Math.pow(val, mutPow);
+                        xy = 1.0 - delta2;
+                        val = 2.0 * (1.0 - rnd) + 2.0 * (rnd - 0.5) * (Math.pow(xy, distributionIndex + 1.0));
+                        deltaq = 1.0 - Math.pow(val, mutPow);
                     }
-
-                    y += deltaq * (yu - yl);
-                    y = this.solutionRepair.repairSolutionVariableValue(y, yl, yu);
+                    y = y + deltaq * (yu - yl);
+                    y = solutionRepair.repairSolutionVariableValue(y, yl, yu);
                 }
-
-                solution.setVariable(i, y);
+                solution.setVariable(i, Math.floor(y));
             }
         }
 

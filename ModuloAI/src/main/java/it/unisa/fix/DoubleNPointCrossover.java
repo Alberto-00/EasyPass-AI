@@ -52,7 +52,7 @@ public class DoubleNPointCrossover implements CrossoverOperator<DoubleSolution> 
     private List<DoubleSolution> doCrossover(List<DoubleSolution> s) {
         DoubleSolution mom = s.get(0);
         DoubleSolution dad = s.get(1);
-        System.out.println(s.get(0).getVariables());
+
         Check.that(
                 mom.getVariables().size() == dad.getVariables().size(),
                 "The 2 parents doesn't have the same number of variables");

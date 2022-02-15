@@ -33,7 +33,6 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
             int x = (int) Math.floor(encoding.get(i));
             int y = (int) Math.floor(encoding.get(i + 1));
 
-            //seatingScore += this.seatingScore[x][y];
             seatingScore += calculateSeatingScore(x, y);
         }
         return seatingScore;
@@ -79,6 +78,7 @@ public class NStudentsVisionRangeProblem extends NStudentsDistanceProblem{
             }
         }
     }
+
 
     private int calculateSeatingScore(int row, int col){
         int firstX, firstY;

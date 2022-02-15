@@ -52,7 +52,7 @@ public class NStudentsRunner {
         DoubleSolution doubleBestSolution = NStudentsRunner.getBestSolution(bestIndividuals);
 
         for (double value: doubleBestSolution.getVariables()) {
-            bestSolution.add((int) Math.floor(value));
+            bestSolution.add((int) value);
         }
 
         JMetalLogger.logger.info(String.format("Problem: %s", problem.getName()));

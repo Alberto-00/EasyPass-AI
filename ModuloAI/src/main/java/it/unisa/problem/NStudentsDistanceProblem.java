@@ -3,7 +3,6 @@ package it.unisa.problem;
 import it.unisa.fix.DefaultDoubleToIntSolution;
 import org.uma.jmetal.problem.doubleproblem.impl.AbstractDoubleProblem;
 import org.uma.jmetal.solution.doublesolution.DoubleSolution;
-import org.uma.jmetal.solution.doublesolution.impl.DefaultDoubleSolution;
 import org.uma.jmetal.util.solutionattribute.impl.NumberOfViolatedConstraints;
 import org.uma.jmetal.util.solutionattribute.impl.OverallConstraintViolation;
 
@@ -36,6 +35,12 @@ public class NStudentsDistanceProblem extends AbstractDoubleProblem implements C
         setBounds(students);
     }
 
+    //Creazione soluzioni con parte decimale .0
+    @Override
+    public DoubleSolution createSolution() {
+        return new DefaultDoubleToIntSolution(bounds, getNumberOfObjectives(), getNumberOfConstraints());
+    }
+
     //Primo obiettivo
     @Override
     public void evaluate(DoubleSolution solution) {
@@ -43,11 +48,6 @@ public class NStudentsDistanceProblem extends AbstractDoubleProblem implements C
         solution.getObjectives()[0] = conflicts;
 
         evaluateConstraints(solution);
-    }
-
-    @Override
-    public DoubleSolution createSolution() {
-        return new DefaultDoubleToIntSolution(bounds, getNumberOfObjectives(), getNumberOfConstraints());
     }
 
     //Calcolo dei vincoli
@@ -90,22 +90,23 @@ public class NStudentsDistanceProblem extends AbstractDoubleProblem implements C
             int y = (int) Math.floor(encoding.get(i + 1));
 
             for (int j = i + 2; j < encoding.size(); j += 2){
-                int actual_x = (int) Math.floor(encoding.get(j));
-                int actual_y = (int) Math.floor(encoding.get(j + 1));
+                int xa = (int) Math.floor(encoding.get(j));
+                int ya = (int) Math.floor(encoding.get(j + 1));
 
-                if ((actual_x - 1) >= 0) {
-                    if (actual_x - 1 == x && y == actual_y)
+                if ((xa - 1) >= 0) {
+                    if (xa - 1 == x && y == ya)
                         conflicts++;
-                } if ((actual_x + 1) < this.ROW){
-                    if (actual_x + 1 == x && y == actual_y)
+                } if ((xa + 1) < this.ROW){
+                    if (xa + 1 == x && y == ya)
                         conflicts++;
-                } if ((actual_y + 1) < this.COL) {
-                    if (actual_x == x && actual_y + 1 == y)
+                } if ((ya + 1) < this.COL){
+                    if (xa == x && ya + 1 == y)
                         conflicts++;
-                } if ((actual_y - 1) >= 0){
-                    if (actual_x == x && actual_y - 1 == y)
+                } if ((ya - 1) >= 0){
+                    if (xa == x && ya - 1 == y)
                         conflicts++;
                 }
+
             }
         }
         return conflicts;
