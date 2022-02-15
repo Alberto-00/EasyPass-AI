@@ -32,7 +32,7 @@ public class NStudentsRunner {
         double crossoverProbability = 0.8;
         double mutationProbability = 0.01;
         int maxEvaluations = 100000;
-        int populationSize = 20;
+        int populationSize = 50;
 
         Problem<DoubleSolution> problem = new NStudentsVisionRangeProblem("Vision Range Problem", ROW, COL, students);
         BinaryTournamentSelection<DoubleSolution> selection = new BinaryTournamentSelection<>(new RankingAndCrowdingDistanceComparator<>());
@@ -68,7 +68,8 @@ public class NStudentsRunner {
 
         System.out.println("\n'" + problem.getName() + "' INFO Best Solution:\n");
         System.out.println("Population Size: " +  populationSize +
-                "\nStudents Size: " + problem.getNumberOfVariables() +
+                " Students Size: " + problem.getNumberOfVariables() +
+                "\nComputing Time: " + nsgaiiRunner.getComputingTime() + " ms" +
                 "\nSolution: " + solution +
                 "\nObjectives: " + doubleBestSolution.getObjectives()[0] + " conflicts\t" + doubleBestSolution.getObjectives()[1] + " score" +
                 "\nConstraints: " + doubleBestSolution.getConstraints()[0] + "\n");
