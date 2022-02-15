@@ -114,24 +114,14 @@ public class NStudentsDistanceProblem extends AbstractDoubleProblem implements C
 
     /*Imposta i lower e gli upper bounds per ogni studente.*/
     private void setBounds(int students){
-        List<Integer> integerLowerBounds = new ArrayList<>();
-        List<Integer> integerUpperBounds = new ArrayList<>();
-
-        for (int i = 0; i < students; i++) {
-            integerLowerBounds.add(0);
-            integerUpperBounds.add(ROW - 1);
-            integerLowerBounds.add(0);
-            integerUpperBounds.add(COL - 1);
-        }
-
         List<Double> doubleLowerBounds = new ArrayList<>();
         List<Double> doubleUpperBounds = new ArrayList<>();
 
-        for (Integer lower: integerLowerBounds) {
-            doubleLowerBounds.add(Double.valueOf(lower));
-        }
-        for (Integer upper: integerUpperBounds) {
-            doubleUpperBounds.add(Double.valueOf(upper));
+        for (int i = 0; i < students; i++) {
+            doubleLowerBounds.add(0.0);
+            doubleUpperBounds.add(ROW - 0.1);
+            doubleLowerBounds.add(0.0);
+            doubleUpperBounds.add(COL - 0.1);
         }
 
         setVariableBounds(doubleLowerBounds, doubleUpperBounds);

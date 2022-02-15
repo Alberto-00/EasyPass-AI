@@ -58,6 +58,7 @@ public class NStudentsRunner {
         JMetalLogger.logger.info(String.format("Problem: %s", problem.getName()));
         JMetalLogger.logger.info(String.format("Solutions: \n%s\n", bestIndividuals));
         JMetalLogger.logger.info(String.format("Total execution time: %s ms", nsgaiiRunner.getComputingTime()));
+        System.out.println("bestSolution: " + bestSolution);
         return bestSolution;
     }
 
