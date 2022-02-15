@@ -32,7 +32,7 @@ public class NStudentsRunner {
         double crossoverProbability = 0.8;
         double mutationProbability = 0.01;
         int maxEvaluations = 100000;
-        int populationSize = 100;
+        int populationSize = 20;
 
         Problem<DoubleSolution> problem = new NStudentsVisionRangeProblem("Vision Range Problem", ROW, COL, students);
         BinaryTournamentSelection<DoubleSolution> selection = new BinaryTournamentSelection<>(new RankingAndCrowdingDistanceComparator<>());
@@ -45,14 +45,33 @@ public class NStudentsRunner {
                 .build();
 
         AlgorithmRunner nsgaiiRunner = new AlgorithmRunner.Executor(nsgaii).execute();
-
         List<DoubleSolution> bestIndividuals = nsgaii.getResult();
+
+        printSolution(problem, bestIndividuals, nsgaiiRunner, populationSize);
+    }
+
+    private static void printSolution(Problem<DoubleSolution> problem, List<DoubleSolution> bestIndividuals,
+                                      AlgorithmRunner nsgaiiRunner, int populationSize){
         DoubleSolution doubleBestSolution = NStudentsRunner.getBestSolution(bestIndividuals);
+        StringBuilder solution = new StringBuilder();
+
+        for (int i = 0; i < doubleBestSolution.getVariables().size(); i++) {
+            double value = doubleBestSolution.getVariable(i);
+            int intValue = (int) value;
+            solution.append(intValue).append(" ");
+        }
 
         JMetalLogger.logger.info(String.format("Problem: %s", problem.getName()));
         JMetalLogger.logger.info(String.format("Solutions: \n%s\n", bestIndividuals));
-        JMetalLogger.logger.info(String.format("Total execution time: %s ms\n", nsgaiiRunner.getComputingTime()));
-        JMetalLogger.logger.info(String.format("\nBest Solution: \n%s\n", doubleBestSolution));
+        JMetalLogger.logger.info(String.format("Total execution time: %s ms", nsgaiiRunner.getComputingTime()));
+        JMetalLogger.logger.info(String.format("Best Solution: %s", doubleBestSolution));
+
+        System.out.println("\n'" + problem.getName() + "' INFO Best Solution:\n");
+        System.out.println("Population Size: " +  populationSize +
+                "\nStudents Size: " + problem.getNumberOfVariables() +
+                "\nSolution: " + solution +
+                "\nObjectives: " + doubleBestSolution.getObjectives()[0] + " conflicts\t" + doubleBestSolution.getObjectives()[1] + " score" +
+                "\nConstraints: " + doubleBestSolution.getConstraints()[0] + "\n");
     }
 
     /*Ritorna la migliore soluzione tra quelle analizzate*/
