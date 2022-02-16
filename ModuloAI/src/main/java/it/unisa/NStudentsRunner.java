@@ -32,7 +32,7 @@ public class NStudentsRunner {
         double crossoverProbability = 0.8;
         double mutationProbability = 0.01;
         int maxEvaluations = 100000;
-        int populationSize = 50;
+        int populationSize = 100;
 
         Problem<DoubleSolution> problem = new NStudentsVisionRangeProblem("Vision Range Problem", ROW, COL, students);
         BinaryTournamentSelection<DoubleSolution> selection = new BinaryTournamentSelection<>(new RankingAndCrowdingDistanceComparator<>());
@@ -63,16 +63,17 @@ public class NStudentsRunner {
 
         JMetalLogger.logger.info(String.format("Problem: %s", problem.getName()));
         JMetalLogger.logger.info(String.format("Solutions: \n%s\n", bestIndividuals));
-        JMetalLogger.logger.info(String.format("Total execution time: %s ms", nsgaiiRunner.getComputingTime()));
         JMetalLogger.logger.info(String.format("Best Solution: %s", doubleBestSolution));
+        JMetalLogger.logger.info(String.format("Total execution time: %s ms", nsgaiiRunner.getComputingTime()));
 
         System.out.println("\n'" + problem.getName() + "' INFO Best Solution:\n");
         System.out.println("Population Size: " +  populationSize +
-                " Students Size: " + problem.getNumberOfVariables() +
+                "\nStudents Size: " + problem.getNumberOfVariables() +
                 "\nComputing Time: " + nsgaiiRunner.getComputingTime() + " ms" +
                 "\nSolution: " + solution +
                 "\nObjectives: " + doubleBestSolution.getObjectives()[0] + " conflicts\t" + doubleBestSolution.getObjectives()[1] + " score" +
-                "\nConstraints: " + doubleBestSolution.getConstraints()[0] + "\n");
+                "\nConstraints: " + doubleBestSolution.getConstraints()[0] +
+                String.format("\nTotal execution time: %s ms", nsgaiiRunner.getComputingTime()));
     }
 
     /*Ritorna la migliore soluzione tra quelle analizzate*/

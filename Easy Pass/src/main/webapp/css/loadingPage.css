@@ -61,7 +61,7 @@
     position: absolute;
     color: #000;
     font-size: 32px;
-    font-family: consolas;
+    font-family: consolas, serif;
     bottom: -120px;
     letter-spacing: 4px;
     font-weight: bolder;
