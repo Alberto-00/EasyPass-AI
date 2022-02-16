@@ -69,7 +69,6 @@ public class NStudentsRunner {
         System.out.println("\n'" + problem.getName() + "' INFO Best Solution:\n");
         System.out.println("Population Size: " +  populationSize +
                 "\nStudents Size: " + problem.getNumberOfVariables() +
-                "\nComputing Time: " + nsgaiiRunner.getComputingTime() + " ms" +
                 "\nSolution: " + solution +
                 "\nObjectives: " + doubleBestSolution.getObjectives()[0] + " conflicts\t" + doubleBestSolution.getObjectives()[1] + " score" +
                 "\nConstraints: " + doubleBestSolution.getConstraints()[0] +
